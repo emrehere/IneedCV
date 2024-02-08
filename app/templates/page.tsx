@@ -50,14 +50,33 @@ export default function Templates() {
 
                     </div>
                 </div>
-                <div className="flex flex-row w-[100%] h-[100%] ">
-                    <div className='w-[30%] bg-orange-500 h-[60%] '>
-                    <input type="text" placeholder='A Title eg. Skills' className='mt-8 font-semibold text-xl mx-auto w-[90%] flex' />
-                    <textarea name="" placeholder='You can fill here' id="" className='w-[90%] h-[40%] font-medium flex mx-auto mt-2' ></textarea>
-                    <input type="text" placeholder='A Title eg. Languages' className='mt-8 font-semibold text-xl mx-auto w-[90%] flex' />
-                    <textarea name="" id="" className='w-[90%] h-[40%] flex mx-auto mt-2 font-medium' ></textarea>
+                <div className="flex flex-row w-[100%] h-[80%] ">
+                    <div className='w-[30%] bg-orange-500 h-[70%] '>
+                    <input type="text" placeholder='A Title eg. Skills' className='mt-8 px-2 font-semibold text-xl mx-auto w-[90%] flex' />
+                    <textarea name="" placeholder='You can fill here' id="" className='w-[90%] px-2  h-[40%] font-medium flex mx-auto mt-2' ></textarea>
+                    <input type="text" placeholder='A Title eg. Languages' className='mt-8 px-2  font-semibold text-xl mx-auto w-[90%] flex' />
+                    <textarea name="" id="" placeholder='You can fill here' className='w-[90%] h-[40%] flex mx-auto mt-2 px-2  font-medium' ></textarea>
                     </div>
-                    <div className='w-[70%] bg-red-500 h-[70%]' >b</div>
+                    <div className='w-[70%]  bg-red-500 h-[90%] pt-8' >
+                        <div className='flex flex-col h-[25%]'>
+                            <input type="text" placeholder='A Title eg. Profile' className='w-[90%] px-2  mx-auto font-semibold text-2xl' />
+                            <textarea name="" id="" placeholder='You can fill here' className='w-[90%] px-2 h-[80%] mx-auto mt-2 font-medium'></textarea>
+                        </div>
+                        <div className='flex flex-col mt-4 h-[25%]'>
+                            <input type="text" placeholder='A Title eg. Projects' className='w-[90%] px-2  mx-auto font-semibold text-2xl' />
+                            <textarea name="" id="" placeholder='You can fill here' className='w-[90%] px-2 h-[80%] mx-auto mt-2 font-medium'></textarea>
+                        </div>
+                        
+                        <div className='flex flex-col mt-4  h-[25%]'>
+                            <input type="text" placeholder='A Title eg. Experience' className='w-[90%] px-2  mx-auto font-semibold text-2xl' />
+                            <textarea name="" placeholder='You can fill here' id="" className='w-[90%] px-2 h-[80%] mx-auto mt-2 font-medium'></textarea>
+                        </div>
+                        <div className='flex flex-col mt-4  h-[25%]'>
+                            <input type="text" placeholder='A Title eg. Education' className='w-[90%] px-2  mx-auto font-semibold text-2xl' />
+                            <textarea name="" placeholder='You can fill here' id="" className='w-[90%] px-2 h-[50%] mx-auto mt-2 font-medium'></textarea>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
