@@ -3,9 +3,8 @@ export default function TextContents() {
         <div>
               <div className="flex justify-betweeen items-center flex-row">
         <div >
-         <h1>Online Resume Builder</h1>
-         <p>Only 2% of resumes make it past the first round. Be in the top 2%</p>
-         <p>Use professional field-tested resume templates that follow the exact ‘resume rules’ employers look for. Easy to use and done within minutes - try now for free!</p>
+        
+        
           <button>Create My Resume</button>
           <p><span className="bg-green-500 h-1 w-1"></span> 39,521 resumes created today</p>
           <img src="./resume1.jpg" alt="resume1" />
