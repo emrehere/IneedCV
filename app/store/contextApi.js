@@ -11,12 +11,29 @@ export function useInfo(){
 
 export function InfoProvider({children}) {
 
-    const [info, setInfo] = useState("try")
+    const [info,setInfo] = useState({
 
-  
+        name: "",
+        surname: "",
+        email: "",
+        phone: "",
+        title: "",
+        description: "",
+        image: null,
+        skills: "",
+        languages: "",
+        profile: "",
+        profileInfo: "",
+        projects: "",
+        projectsInfo: "",
+        education: "",
+        educationInfo: "",
+        works: "",
+        worksInfo: "",
+    })
 
     return (
-        <InfoContext.Provider value={{info, setInfo}}>
+        <InfoContext.Provider value={{ info, setInfo }}>
             {children}
         </InfoContext.Provider>
     )
