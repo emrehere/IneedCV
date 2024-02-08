@@ -1,10 +1,11 @@
 "use client"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useInfo } from "../store/contextApi";
+
 
 export default function Templates() {
 
-    const { info, setInfo } = useInfo();
+    const { info, setInfo} = useInfo();
 
     const [selectedImage, setSelectedImage] = useState(null);
 
@@ -20,12 +21,14 @@ export default function Templates() {
         }
     };
 
-        console.log(info)
-  
+      
+   
+
 
     return (
         <div>
-            <div className="h-[1400px] w-[1000px] bg-blue-500 mx-auto my-16 p-8 ">
+           
+            <div className="h-[1400px] w-[1000px] bg-blue-500 mx-auto my-8 p-8 ">
                 <div className="bg-green-500 h-[25%] flex flex-row ">
                     <div className="w-[30%] px-8  flex items-center" >
                         <div className='rounded-xl'>
@@ -40,7 +43,9 @@ export default function Templates() {
                     </div>
                     <div className="w-[70%]  flex flex-col space-y-4 justify-center items-center" >
 
-                        <input onChange={(e) => setInfo({ ...info, name: e.target.value })} className="w-[50%] font-bold text-3xl px-2 text-gray-800" type="text" name="" placeholder="Full Name..." />
+                        <input onChange={(e) => setInfo({ ...info, name: e.target.value })} 
+                        className="w-[50%] font-bold text-3xl px-2 text-gray-800" type="text"
+                          placeholder="Full Name..." />
                         <input onChange={(e) => setInfo({ ...info, title: e.target.value })} className="w-[50%] font-bold text-2xl px-2 text-gray-800" type="text" name="" placeholder="Job Title..." />
 
                         <div className="flex flex-row w-[50%] pt-8 font-semibold justify-between
@@ -87,6 +92,14 @@ export default function Templates() {
                         
                     </div>
                 </div>
+            </div>
+            <div className='flex flex-row justify-center space-x-32 mb-16'>
+            <div className='flex justify-center '>
+                <button className='bg-blue-500 hover:bg-blue-600 text-white text-xl px-8 py-2 rounded-xl font-bold'>Save Your Resume Now</button>
+            </div>
+            <div className='flex justify-center '>
+                <button className='bg-blue-500 hover:bg-blue-600 text-white text-xl px-4 py-2 rounded-xl font-bold'>Proceed to Customize Further</button>
+            </div>
             </div>
         </div>
     )

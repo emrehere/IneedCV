@@ -28,11 +28,17 @@ export function InfoProvider({children}) {
         projects: "",
         projectsInfo: "",
         education: "",
-        educationInfo: "",       
+        educationInfo: "",
+        save: false,       
     })
 
+
+    
+      
+    
+
     return (
-        <InfoContext.Provider value={{ info, setInfo }}>
+        <InfoContext.Provider value={{info,setInfo}}>
             {children}
         </InfoContext.Provider>
     )

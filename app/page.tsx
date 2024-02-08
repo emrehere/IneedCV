@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <main>
       <div >
+        
       <div className="flex flex-col items-center justify-center bg-blue-100 h-[75vh] min-h-[350px] w-full">
      <div className="w-[70vw] flex items-center flex-col bg-blue-900 bg-opacity-10 py-8
       rounded-lg shadow-lg shadow-gray-400">
