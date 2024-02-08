@@ -14,22 +14,21 @@ export function InfoProvider({children}) {
     const [info,setInfo] = useState({
 
         name: "",
-        surname: "",
-        email: "",
-        phone: "",
         title: "",
-        description: "",
+        email: "",
+        city: "",
+        phone: "",   
         image: null,
         skills: "",
+        skillsInfo: "",
         languages: "",
+        languagesInfo: "",
         profile: "",
         profileInfo: "",
         projects: "",
         projectsInfo: "",
         education: "",
-        educationInfo: "",
-        works: "",
-        worksInfo: "",
+        educationInfo: "",       
     })
 
     return (
