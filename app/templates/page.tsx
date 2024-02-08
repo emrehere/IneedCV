@@ -29,7 +29,7 @@ export default function Templates() {
                             
                         </div>
                     </div>
-                    <div className="w-[70%] flex flex-col space-y-4 justify-center items-center" >
+                    <div className="w-[70%]  flex flex-col space-y-4 justify-center items-center" >
 
                         <input className="w-[50%] font-bold text-3xl px-2 text-gray-800" type="text" name="" placeholder="Full Name..." />
                         <input className="w-[50%] font-bold text-2xl px-2 text-gray-800" type="text" name="" placeholder="Job Title..." />
@@ -50,9 +50,14 @@ export default function Templates() {
 
                     </div>
                 </div>
-                <div className="flex flex-row">
-                    <div>a</div>
-                    <div>b</div>
+                <div className="flex flex-row w-[100%] h-[100%] ">
+                    <div className='w-[30%] bg-orange-500 h-[60%] '>
+                    <input type="text" placeholder='A Title eg. Skills' className='mt-8 font-semibold text-xl mx-auto w-[90%] flex' />
+                    <textarea name="" placeholder='You can fill here' id="" className='w-[90%] h-[40%] font-medium flex mx-auto mt-2' ></textarea>
+                    <input type="text" placeholder='A Title eg. Languages' className='mt-8 font-semibold text-xl mx-auto w-[90%] flex' />
+                    <textarea name="" id="" className='w-[90%] h-[40%] flex mx-auto mt-2 font-medium' ></textarea>
+                    </div>
+                    <div className='w-[70%] bg-red-500 h-[70%]' >b</div>
                 </div>
             </div>
         </div>
