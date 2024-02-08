@@ -5,6 +5,17 @@ import MyUserInfo from "./userInfoModel.js";
 const router = Router();
 
 
+router.get("/mycv", async (req, res) => {
+    
+    try {
+        const myUserInfo = await MyUserInfo.find();
+        res.json(myUserInfo);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+
+})
+
 
 
 // POST endpoint
