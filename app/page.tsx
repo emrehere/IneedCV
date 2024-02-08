@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -17,9 +18,10 @@ export default function Home() {
          <p>Use professional field-tested resume templates that follow the exact </p>
           <p>‘resume rules’ employers look for. Easy to use and done within</p>
            <p>minutes - try now for free!</p>
-            
+            <Link href={"/templates"} >
             <button className="bg-blue-600 text-white px-8 py-4 mt-4 rounded-xl font-semibold
             hover:bg-white hover:border-2 border-blue-600 hover:text-blue-600 " >Create My Resume</button>
+            </Link>
             <div>    
             </div>        
             </div>

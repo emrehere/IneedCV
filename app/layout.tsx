@@ -32,11 +32,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
-      <body style={{ fontFamily: 'Jockey One, sans-serif' }} className={inter.className}>
-        <div>
-        <Navbar />
+      <body style={{ fontFamily: 'Jockey One, sans-serif'}} className={inter.className}>
+      <div className="min-h-[85vh]">
+          <Navbar />
+          {children}
         </div>
-        {children}
         <Footer />
 
       </body>
