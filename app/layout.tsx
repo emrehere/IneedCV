@@ -6,6 +6,7 @@ import Head from "next/head";
 import React from "react";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import { InfoProvider } from "../app/store/contextApi"
 
 
 
@@ -33,12 +34,13 @@ export default function RootLayout({
         />
       </Head>
       <body style={{ fontFamily: 'Jockey One, sans-serif'}} className={inter.className}>
+      <InfoProvider>
       <div className="min-h-[85vh]">
           <Navbar />
           {children}
         </div>
         <Footer />
-
+      </InfoProvider>
       </body>
 
     </html>
