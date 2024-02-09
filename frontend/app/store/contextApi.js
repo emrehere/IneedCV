@@ -19,7 +19,7 @@ export function InfoProvider({children}) {
         email: "",
         city: "",
         phone: "",   
-        image: null,
+        image: "",
         skills: "",
         skillsInfo: "",
         languages: "",

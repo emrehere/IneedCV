@@ -10,7 +10,7 @@ export default function Buttons() {
         fetchCvDatas()
     },[])
 
-    console.log(info)
+ 
 
     const saved = info?.save;
 
