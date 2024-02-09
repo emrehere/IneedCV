@@ -1,17 +1,10 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react" 
+import { useInfo } from "../store/contextApi"
 
 export default function MyCV() {
-    const [data, setData] = useState([]);
-
-
-   function fetchCvDatas() {
-        fetch('http://localhost:8000/mycv')
-        .then(response => response.json())
-        .then(data => {
-            setData(data)
-        })
-    }
+    
+    const { data, fetchCvDatas } = useInfo();
 
     useEffect(() => {
         fetchCvDatas()
