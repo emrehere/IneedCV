@@ -1,3 +1,4 @@
+import { set } from "lodash";
 import React,{createContext,useState,useEffect, useContext} from "react";
 import { flushSync } from "react-dom";
 
@@ -29,6 +30,8 @@ export function InfoProvider({children}) {
         projectsInfo: "",
         education: "",
         educationInfo: "",
+        experience: "",
+        experienceInfo: "",
         save: false,       
     })
 
@@ -49,6 +52,8 @@ export function InfoProvider({children}) {
         projectsInfo: "",
         education: "",
         educationInfo: "",
+        experience: "",
+        experienceInfo: "",
         save: false,
     }
 
@@ -80,6 +85,7 @@ export function InfoProvider({children}) {
     
             if (response.ok) {
                 console.log('Data saved successfully from frontend');
+                setInfo({ ...info, save: true })
             } else {
                 console.error('Failed to save data:', response.statusText);
             }
@@ -118,8 +124,10 @@ export function InfoProvider({children}) {
   
 
     async function updateCV() {
+       
         try {
             
+            console.log('Sending data:', id);
             
             const response = await fetch(`http://localhost:8000/update/${id}`, {
                 
@@ -135,7 +143,7 @@ export function InfoProvider({children}) {
                 throw new Error('Network response was not ok');
             }
             console.log("it works", info)
-    
+            setInfo({ ...info, save: true })
             const data = await response.json();
             console.log('Success:', data);
             // Handle success on the frontend
@@ -155,7 +163,7 @@ export function InfoProvider({children}) {
                 
                 setInfo(data[0]?.user)
                 setId(data[0]?._id)
-              
+               console.log(data[0]?._id)
                 
                    
             }

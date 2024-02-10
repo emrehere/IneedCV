@@ -1,18 +1,41 @@
 "use client"
 import { useEffect, useState } from 'react'
 import { useInfo } from "../store/contextApi";
+import { set } from 'lodash';
+
 
 export default function Buttons() {
 
-    const { info, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
+    const { info,id, setInfo, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
+
+    const saved = info?.save;
 
     useEffect(() => {
         fetchCvDatas()
     },[])
 
+    
  
 
-    const saved = info?.save;
+   
+
+    console.log(saved)
+
+
+    const proceedFunc = async () => {
+        notRobot();
+        if (!saved) {
+            notRobot();
+            if (robot) {
+                await saveToDatabase();
+                console.log('we need to save first')               
+            }
+        }else {
+            await updateCV();
+            console.log('we need to update first')
+        } 
+        setInfo({ ...info, save: true })
+      };
 
     
 
@@ -46,7 +69,7 @@ export default function Buttons() {
 
                 </div>
                 <div className='flex justify-center '>
-                    <button className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] py-4 mx-2 rounded-xl font-bold'>Proceed to Customize Further</button>
+                    <button onClick={proceedFunc} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] py-4 mx-2 rounded-xl font-bold'>Proceed to Customize Further</button>
                 </div>
             </div>
 

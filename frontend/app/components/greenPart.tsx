@@ -26,7 +26,6 @@ export default function GreenPart() {
 
     const cvImage = info?.image;
 
-    
  
 
     return (
@@ -52,20 +51,20 @@ export default function GreenPart() {
                         className="w-[50%] font-bold text-3xl px-2 text-gray-800" type="text"
                         placeholder="Full Name..."
                         value={info?.name} />
-                    <input onChange={(e) => setInfo({ ...info, title: e.target.value })} className="w-[50%] font-bold text-2xl px-2 text-gray-800" type="text" name="" placeholder="Job Title..." />
+                    <input value={info?.title} onChange={(e) => setInfo({ ...info, title: e.target.value })} className="w-[50%] font-bold text-2xl px-2 text-gray-800" type="text" name="" placeholder="Job Title..." />
 
                     <div className="flex flex-row w-[50%] pt-8 font-semibold justify-between
                          items-center text-sm text-gray-700">
                         <p className="mr-2">Phone Number: </p>
-                        <input onChange={(e) => setInfo({ ...info, phone: e.target.value })} className="w-[65%] h-8 px-2 text-gray-700" type="text" name="" placeholder="Phone..." />
+                        <input value={info?.phone} onChange={(e) => setInfo({ ...info, phone: e.target.value })} className="w-[65%] h-8 px-2 text-gray-700" type="text" name="" placeholder="Phone..." />
                     </div>
                     <div className="flex flex-row w-[50%] text-gray-700 items-center font-semibold text-sm justify-between">
                         <p className="mr-2">Email: </p>
-                        <input onChange={(e) => setInfo({ ...info, email: e.target.value })} className="w-[85%] h-8 px-2 text-gray-700" type="text" name="" placeholder="Email..." />
+                        <input value={info?.email} onChange={(e) => setInfo({ ...info, email: e.target.value })} className="w-[85%] h-8 px-2 text-gray-700" type="text" name="" placeholder="Email..." />
                     </div>
                     <div className="flex flex-row w-[50%] text-gray-700 items-center font-semibold text-sm justify-between">
                         <p className="mr-2">City: </p>
-                        <input onChange={(e) => setInfo({ ...info, city: e.target.value })} className="w-[85%] h-8 px-2 text-gray-700" type="text" name="" placeholder="City..." />
+                        <input value={info?.city} onChange={(e) => setInfo({ ...info, city: e.target.value })} className="w-[85%] h-8 px-2 text-gray-700" type="text" name="" placeholder="City..." />
                     </div>
 
                 </div>
