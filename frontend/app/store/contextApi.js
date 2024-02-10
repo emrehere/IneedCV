@@ -32,6 +32,26 @@ export function InfoProvider({children}) {
         save: false,       
     })
 
+    const initialInfo = {
+        name: "",
+        title: "",
+        email: "",
+        city: "",
+        phone: "",
+        image: "",
+        skills: "",
+        skillsInfo: "",
+        languages: "",
+        languagesInfo: "",
+        profile: "",
+        profileInfo: "",
+        projects: "",
+        projectsInfo: "",
+        education: "",
+        educationInfo: "",
+        save: false,
+    }
+
     const [id, setId] = useState("")
 
         const [robot, setRobot] = useState(false)
@@ -69,7 +89,28 @@ export function InfoProvider({children}) {
     }
 
     async function deleteCV() {
+        try {
+            
+            const response = await fetch(`http://localhost:8000/delete/${id}`, {
+                method: 'DELETE',
+            });
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            const data = await response.json();
+            console.log('Success:', data);
+         
+            // Handle success on the frontend
+            
+        } catch (error) {
+            
+            console.error('Error:', error);
+            // Handle error on the frontend
+        }
         
+        setInfo(initialInfo)       
     }
 
    

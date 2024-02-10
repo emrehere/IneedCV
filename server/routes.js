@@ -99,6 +99,23 @@ router.put('/update/:userId', async (req, res) => {
   }
 });
 
+router.delete('/delete/:userId', async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    const result = await MyUserInfo.findByIdAndDelete(userId);
+    if (!result) {
+      console.error(`User with ID ${userId} not found`);
+      throw new Error("User not found");
+    }
+    console.log("CV deleted successfully");
+    res.status(200).json({ message: "CV deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting CV:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 
 
 
