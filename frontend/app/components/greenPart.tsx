@@ -15,16 +15,27 @@ export default function GreenPart() {
 
 
         if (file) {
+
+            console.log(file)
            
             setInfo({ ...info, image: URL.createObjectURL(file) });
         }
     };
 
     useEffect(() => {
-        fetchCvDatas()
-    }, [])
+        fetchCvDatas();
+
+        // Cleanup function for the created object URL
+        return () => {
+            if (info.image) {
+                URL.revokeObjectURL(info.image);
+            }
+        };
+    }, [info.image]);
 
     const cvImage = info?.image;
+
+    console.log(cvImage)
 
  
 
