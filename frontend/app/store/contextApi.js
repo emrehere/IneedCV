@@ -13,7 +13,7 @@ export function useInfo(){
 export function InfoProvider({children}) {
 
     const [info,setInfo] = useState({
-
+        id: "",
         name: "",
         title: "",
         email: "",
@@ -36,8 +36,9 @@ export function InfoProvider({children}) {
         const [robot, setRobot] = useState(false)
 
     function notRobot() {
-        setInfo({ ...info, save: true })
+        setInfo({ ...info, save: true, id: Date.now() })
         setRobot(true)
+
     }
 
     
@@ -70,10 +71,38 @@ export function InfoProvider({children}) {
         
     }
 
-    async function updateCV() {
-        
-    }
+   
+  
+    
 
+    async function updateCV() {
+        try {
+            
+            
+            const response = await fetch("http://localhost:8000/update/65c741de1b2f9215126ce385", {
+                
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(info),
+                
+            });
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log("it works", info)
+    
+            const data = await response.json();
+            console.log('Success:', data);
+            // Handle success on the frontend
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle error on the frontend
+        }
+    }
+    
 
    
    function fetchCvDatas() {
@@ -82,6 +111,7 @@ export function InfoProvider({children}) {
         .then(data => {
             if(data[0]?.user){
                 setInfo(data[0]?.user)
+              
                    
             }
         })

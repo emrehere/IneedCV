@@ -26,8 +26,8 @@ export default function GreenPart() {
 
     const cvImage = info?.image;
 
-
-    
+  
+ 
 
     return (
         <div>
