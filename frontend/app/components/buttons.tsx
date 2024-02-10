@@ -2,42 +2,28 @@
 import { useEffect, useState } from 'react'
 import { useInfo } from "../store/contextApi";
 import { set } from 'lodash';
+import Link from 'next/link';
 
 
 export default function Buttons() {
 
-    const { info,id, setInfo, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
+    const { info, id, setInfo, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
 
     const saved = info?.save;
 
     useEffect(() => {
         fetchCvDatas()
-    },[])
+    }, [])
 
-    
- 
 
-   
+
+
+
 
     console.log(saved)
 
 
-    const proceedFunc = async () => {
-        notRobot();
-        if (!saved) {
-            notRobot();
-            if (robot) {
-                await saveToDatabase();
-                console.log('we need to save first')               
-            }
-        }else {
-            await updateCV();
-            console.log('we need to update first')
-        } 
-        setInfo({ ...info, save: true })
-      };
 
-    
 
 
     return (
@@ -52,10 +38,13 @@ export default function Buttons() {
                                 </button>
                             </div>
                             <div className='flex justify-center'>
+                                <Link href={"/mycv"} >
                                 <button onClick={updateCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 py-4 rounded-xl font-bold'>
-                                    Update Your Resume
+                                    Customize Further
                                 </button>
+                                </Link>
                             </div>
+                           
                         </div>
                     ) : (
                         // Content to show when saved is false
@@ -68,18 +57,16 @@ export default function Buttons() {
                     )}
 
                 </div>
-                <div className='flex justify-center '>
-                    <button onClick={proceedFunc} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] py-4 mx-2 rounded-xl font-bold'>Proceed to Customize Further</button>
-                </div>
+
             </div>
 
             {
                 robot ? <div className='flex justify-center'>
                     <div className='bg-blue-100 h-[30vh] mb-12 rounded-2xl -mt-[30vh] w-[75vw]'>
-                    <p className='text-red-500 text-xl '>Please check the checkbox</p> 
-                    <p onClick={ saveToDatabase }>I m not</p>
+                        <p className='text-red-500 text-xl '>Please check the checkbox</p>
+                        <p onClick={saveToDatabase}>I m not</p>
                     </div>
-                    
+
                 </div> : null
             }
         </div>

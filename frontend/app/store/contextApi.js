@@ -86,6 +86,7 @@ export function InfoProvider({children}) {
             if (response.ok) {
                 console.log('Data saved successfully from frontend');
                 setInfo({ ...info, save: true })
+                fetchCvDatas()
             } else {
                 console.error('Failed to save data:', response.statusText);
             }
@@ -163,8 +164,7 @@ export function InfoProvider({children}) {
                 
                 setInfo(data[0]?.user)
                 setId(data[0]?._id)
-               console.log(data[0]?._id)
-                
+               console.log(data[0]?._id)               
                    
             }
         })

@@ -25,17 +25,10 @@ export default function GreenPart() {
     useEffect(() => {
         fetchCvDatas();
 
-        // Cleanup function for the created object URL
-        return () => {
-            if (info.image) {
-                URL.revokeObjectURL(info.image);
-            }
-        };
-    }, [info.image]);
+     
+    }, []);
 
-    const cvImage = info?.image;
-
-    console.log(cvImage)
+   
 
  
 
@@ -44,8 +37,8 @@ export default function GreenPart() {
             <div className="bg-green-500 h-[25%] flex flex-row ">
                 <div className="w-[30%] px-8  flex items-center" >
                     <div className='rounded-xl'>
-                        {cvImage ? (
-                            <img src={cvImage} alt="Uploaded Image" className='h-80 object-cover mt-6 rounded-xl' />
+                        {info?.image ? (
+                            <img src={info?.image} alt="Uploaded Image" className='h-80 object-cover mt-6 rounded-xl' />
                         ) : ""}
 
 
