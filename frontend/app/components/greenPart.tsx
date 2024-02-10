@@ -26,7 +26,7 @@ export default function GreenPart() {
 
     const cvImage = info?.image;
 
-  
+    
  
 
     return (
@@ -43,6 +43,8 @@ export default function GreenPart() {
 
 
                     </div>
+
+
                 </div>
                 <div className="w-[70%]  flex flex-col space-y-4 justify-center items-center" >
 

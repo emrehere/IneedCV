@@ -7,15 +7,13 @@ import Buttons from '../components/buttons';
 
 export default function Templates() {
 
-    const { info, setInfo, fetchCvDatas, data } = useInfo();
+    const { info, setInfo, fetchCvDatas, id } = useInfo();
 
     useEffect(() => {
         fetchCvDatas()
         
     },[])
 
-  
-    console.log(info)
 
  
    

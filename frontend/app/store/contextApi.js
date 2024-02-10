@@ -13,7 +13,6 @@ export function useInfo(){
 export function InfoProvider({children}) {
 
     const [info,setInfo] = useState({
-        id: "",
         name: "",
         title: "",
         email: "",
@@ -33,10 +32,12 @@ export function InfoProvider({children}) {
         save: false,       
     })
 
+    const [id, setId] = useState("")
+
         const [robot, setRobot] = useState(false)
 
     function notRobot() {
-        setInfo({ ...info, save: true, id: Date.now() })
+        setInfo({ ...info, save: true})
         setRobot(true)
 
     }
@@ -73,13 +74,13 @@ export function InfoProvider({children}) {
 
    
   
-    
+  
 
     async function updateCV() {
         try {
             
             
-            const response = await fetch("http://localhost:8000/update/65c741de1b2f9215126ce385", {
+            const response = await fetch(`http://localhost:8000/update/${id}`, {
                 
                 method: 'PUT',
                 headers: {
@@ -110,8 +111,11 @@ export function InfoProvider({children}) {
         .then(response => response.json())
         .then(data => {
             if(data[0]?.user){
+                
                 setInfo(data[0]?.user)
+                setId(data[0]?._id)
               
+                
                    
             }
         })
@@ -123,7 +127,7 @@ export function InfoProvider({children}) {
 
     return (
         <InfoContext.Provider value={{info,setInfo, saveToDatabase, deleteCV, updateCV,
-         fetchCvDatas, notRobot, robot, setRobot}}>
+         fetchCvDatas, notRobot, robot, setRobot, id}}>
             {children}
         </InfoContext.Provider>
     )
