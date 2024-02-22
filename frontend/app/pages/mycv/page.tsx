@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react" 
-import { useInfo } from "../store/contextApi"
+import { useInfo } from "../../store/contextApi"
 import Link from "next/link"
 
 export default function MyCV() {

@@ -1,8 +1,8 @@
 "use client"
 import { useEffect, useState } from 'react'
-import { useInfo } from "../store/contextApi";
-import GreenPart from '../components/greenPart';
-import Buttons from '../components/buttons';
+import { useInfo } from "../../store/contextApi";
+import GreenPart from '../../components/greenPart';
+import Buttons from '../../components/buttons';
 
 
 export default function Templates() {
