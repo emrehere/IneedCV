@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'; 
 import cors from 'cors';
-import Routes from "./routes.js";
+import userInfoRoutes from './routes/cvInfo.js';
 
 
 
@@ -14,7 +14,7 @@ const port = process.env.PORT || 7000;
 app.use(express.json());
 app.use(cors());
 
-app.use('/', Routes);
+app.use('/', userInfoRoutes);
 
 
 mongoose.connect(process.env.MONGODB_URI, {

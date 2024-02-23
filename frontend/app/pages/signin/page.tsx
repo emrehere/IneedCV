@@ -46,7 +46,7 @@ function Page() {
                     
                        </div>
                          
-                        <button className='bg-blue-950 text-white py-2 w-[20vw] mt-8 rounded-md font-semibold text-xl '>Login</button>
+                        <button className='bg-blue-950 text-white py-2 w-[20vw] mt-8 rounded-md font-semibold text-xl  shadow-gray-300 hover:shadow-xl '>Login</button>
                     </div>
                 </div>
             </div>
