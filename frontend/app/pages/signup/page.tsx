@@ -21,11 +21,11 @@ function Page() {
             <p>Password:</p>
             <input className='bg-blue-300 bg-opacity-20 w-[19vw] h-10 outline-none px-2' type="text" placeholder=' your password' />
             </div>
-            <div>
-                <button>Back</button>
-                <button>Continue</button>
+            <div className='w-[26vw] flex justify-between pt-4'>
+                <button className='hover:border-opacity-50 border-2 border-opacity-30 border-blue-950 w-[10vw] py-2'>Back</button>
+                <button className='bg-blue-950 hover:shadow-lg shadow-gray-300 text-white w-[10vw] py-2 ml-4'>Continue</button>
             </div>
-            <div>Already have an account? <Link href={'/pages/signin'}>Sign in</Link></div>
+            <div className='pt-2 '>Already have an account? <Link className='text-orange-500 pl-2 font-semibold text-lg' href={'/pages/signin'}>Sign in</Link></div>
             
         </div>
       </div>
