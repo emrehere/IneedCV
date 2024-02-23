@@ -11,9 +11,12 @@ const loginUser = async (req, res) => {
 
     try {
         const user = await UserPattern.login(email, password);
+        console.log(user)
       
 
         const token = createToken(user._id);
+        console.log(user._id)
+        console.log(token)
 
         res.status(200).json({ email, token, id: user.id });
     } catch (error) {

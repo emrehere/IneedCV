@@ -22,6 +22,7 @@ function Page() {
           password
         })
       })
+      console.log(res)
 
       if (res.ok) {
         console.log('user saved')
