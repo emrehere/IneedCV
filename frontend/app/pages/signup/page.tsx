@@ -1,7 +1,42 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import Link from 'next/link'
 
 function Page() {
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+
+  const saveTheUser = async () => {
+    try {
+      const res = await fetch('http://localhost:8000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password
+        })
+      })
+
+      if (res.ok) {
+        console.log('user saved')
+      } else {
+        console.log('user not saved')
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+
+    }
+  
+
+
   return (
     <div style={{ backgroundImage: "url('/hired1.webp')" }} className='w-full min-h-screen
     bg-cover  '>
@@ -11,19 +46,19 @@ function Page() {
             <h1 className='text-3xl text-blue-950 font-semibold mb-4'>Join Now</h1>
             <div className='flex flex-row w-[26vw] items-center justify-between'>
             <p>Name:</p>
-            <input className='bg-blue-300 bg-opacity-20 w-[19vw] h-10 outline-none px-2' type="text" placeholder=' your name' />
+            <input value={name} onChange={(e) => setName(e.target.value)} className='bg-blue-300 bg-opacity-20 w-[19vw] h-10 outline-none px-2' type="text" placeholder=' your name' />
             </div>
             <div className='flex flex-row w-[26vw] items-center py-2 justify-between '>
             <p>Email:</p>
-            <input className='bg-blue-300 bg-opacity-20 w-[19vw] h-10 outline-none px-2' type="text" placeholder=' your email' />
+            <input value={email} onChange={(e) => setEmail(e.target.value)} className='bg-blue-300 bg-opacity-20 w-[19vw] h-10 outline-none px-2' type="text" placeholder=' your email' />
             </div>
             <div className='flex flex-row w-[26vw] items-center justify-between'>
             <p>Password:</p>
-            <input className='bg-blue-300 bg-opacity-20 w-[19vw] h-10 outline-none px-2' type="text" placeholder=' your password' />
+            <input value={password} onChange={(e) => setPassword(e.target.value)} className='bg-blue-300 bg-opacity-20 w-[19vw] h-10 outline-none px-2' type="text" placeholder=' your password' />
             </div>
             <div className='w-[26vw] flex justify-between pt-4'>
                 <button className='hover:border-opacity-50 border-2 border-opacity-30 border-blue-950 w-[10vw] py-2'>Back</button>
-                <button className='bg-blue-950 hover:shadow-lg shadow-gray-300 text-white w-[10vw] py-2 ml-4'>Continue</button>
+                <button onClick={saveTheUser} className='bg-blue-950 hover:shadow-lg shadow-gray-300 text-white w-[10vw] py-2 ml-4'>Continue</button>
             </div>
             <div className='pt-2 '>Already have an account? <Link className='text-orange-500 pl-2 font-semibold text-lg' href={'/pages/signin'}>Sign in</Link></div>
             

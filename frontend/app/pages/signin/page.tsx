@@ -6,16 +6,43 @@ import React, { useEffect, useState } from 'react'
 function Page() {
 
     const [inputType, setInputType] = useState("password")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
-    const toggleInputType = () => {
-        
+    const toggleInputType = () => {     
           setInputType("text");
-
           setTimeout(() => {
             setInputType("password");
-          }, 800);
-  
+          }, 800);  
       };
+
+      const loginUser = async () => {
+        try {
+            const res = await fetch('http://localhost:8000/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          
+          body: JSON.stringify({
+            email,
+            password
+          })
+        })
+
+        if (res.ok ) {
+          console.log('user logged in')
+        } else {
+          console.log('user not logged in')
+        }
+
+        }
+        catch (error) {
+          console.log(error)
+        }
+      }
+
+      
 
 
     return (
@@ -32,11 +59,11 @@ function Page() {
                        </div>
                        <div className='flex flex-row w-[35vw] items-center justify-between'>
                        <p>Email: </p>
-                        <input className='h-10 w-[28vw] border-blue-950 border-2 outline-none border-opacity-25 px-2' type="text" placeholder='your email' />
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} className='h-10 w-[28vw] border-blue-950 border-2 outline-none border-opacity-25 px-2' type="text" placeholder='your email' />
                        </div>
                        <div className='flex flex-row w-[35vw] items-center justify-between pt-4'>
                        <p>Password: </p>
-                        <input className='h-10 ml-4 w-[28vw] border-blue-950 border-2 outline-none border-opacity-25 px-2'
+                        <input value={password} onChange={(e) => setPassword(e.target.value)} className='h-10 ml-4 w-[28vw] border-blue-950 border-2 outline-none border-opacity-25 px-2'
                          type={inputType} placeholder='your password' />
                         <div>  
                          <p onClick={toggleInputType} className={ `absolute 
@@ -46,7 +73,7 @@ function Page() {
                     
                        </div>
                          
-                        <button className='bg-blue-950 text-white py-2 w-[20vw] mt-8 rounded-md font-semibold text-xl  shadow-gray-300 hover:shadow-xl '>Login</button>
+                        <button onClick={loginUser} className='bg-blue-950 text-white py-2 w-[20vw] mt-8 rounded-md font-semibold text-xl  shadow-gray-300 hover:shadow-xl '>Login</button>
                     </div>
                 </div>
             </div>

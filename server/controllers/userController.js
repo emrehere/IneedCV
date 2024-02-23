@@ -22,15 +22,15 @@ const loginUser = async (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, name } = req.body;
 
     try {
-        const user = await UserPattern.register(email, password);
+        const user = await UserPattern.register(email, password, name);
 
         const token = createToken(user._id);
         
 
-        res.status(200).json({ email, token, id : user._id });
+        res.status(200).json({ email, name, token, id : user._id });
     }catch (error) {
         res.status(400).json({ error: error.message });
     }
