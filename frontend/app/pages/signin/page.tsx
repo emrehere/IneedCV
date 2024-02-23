@@ -1,6 +1,23 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
+
+
 
 function Page() {
+
+    const [inputType, setInputType] = useState("password")
+
+    const toggleInputType = () => {
+        
+          setInputType("text");
+
+          setTimeout(() => {
+            setInputType("password");
+          }, 800);
+  
+      };
+
+
     return (
         <div style={{ backgroundImage: "url('/signin5.webp')" }} className='h-[105vh] -mt-[5vh] bg-cover '>
             <div className='h-[92vh] w-full flex flex-col'>
@@ -19,10 +36,12 @@ function Page() {
                        </div>
                        <div className='flex flex-row w-[35vw] items-center justify-between pt-4'>
                        <p>Password: </p>
-                        <input className='h-10 ml-4 w-[28vw] border-blue-950 border-2 outline-none border-opacity-25 px-2
-                         ' type="password" placeholder='your password' />
+                        <input className='h-10 ml-4 w-[28vw] border-blue-950 border-2 outline-none border-opacity-25 px-2'
+                         type={inputType} placeholder='your password' />
                         <div>  
-                         <p className='absolute bg-gray-600 h-4 w-4 rounded-full -ml-6 -mt-2 '>    </p>
+                         <p onClick={toggleInputType} className={ `absolute 
+                          ${inputType === "password" ? "bg-blue-950" : "bg-white border-4 border-blue-950 border-opacity-50 "}
+                           h-4 w-4 rounded-full -ml-6 -mt-2 ` }>  </p>
                         </div>
                     
                        </div>
