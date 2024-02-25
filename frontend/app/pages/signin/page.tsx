@@ -8,7 +8,7 @@ function Page() {
     const [inputType, setInputType] = useState("password")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [userData, setUserData] = useState({})
+ 
 
     const toggleInputType = () => {
         setInputType("text");
@@ -17,18 +17,32 @@ function Page() {
         }, 800);
     };
 
+
+    const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+      const storedUserString = localStorage.getItem('user');
+      const storedUser = JSON.parse(storedUserString);
+  
+      // Check if storedUser is available
+      if (storedUser) {
+        // Update state with the user object
+        setUserData(storedUser);
+      }
+    }, []);
+
    
 
     const loginUser = async () => {
-        const storedData = JSON.parse(localStorage.getItem("token"));
-        console.log("Stored Data:", storedData);
+        console.log('my token' + userData.token)
         
         try {
             const res = await fetch('http://localhost:8000/api/login', {
+               
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': 'Bearer ' + userData.token
                    
                 },
                 body: JSON.stringify({
