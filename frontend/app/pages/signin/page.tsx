@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 
 
+
 function Page() {
 
     const [inputType, setInputType] = useState("password")
@@ -54,10 +55,11 @@ function Page() {
             if (res.ok) {
                 const data = await res.json();
                 setUserData(data);
+                console.log(data)
     
                 // Store the token securely in localStorage
-                localStorage.setItem('accessToken', data.accessToken);
-                console.log('User logged in');
+                localStorage.setItem('token', JSON.stringify(data.token));
+                console.log('User logged in');    
             } else {
                 console.log('User not logged in. Status:', res.status);
                 const errorData = await res.json(); // If the server returns error details in the response body

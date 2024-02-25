@@ -9,13 +9,13 @@ import requireAuth from "../middleware/requireAuth.js";
 
 const router = express.Router();
 
-router.use(requireAuth);
 
-router.get("/mycv", getMyCV);
 
-router.post("/templates", createTemplate);
+router.get("/mycv", requireAuth, getMyCV);
 
-router.put('/update/:userId', async (req, res) => {
+router.post("/templates", requireAuth, createTemplate);
+
+router.put('/update/:userId', requireAuth, async (req, res) => {
   const userId = req.params.userId;
   const updatedData = req.body;
 
@@ -27,7 +27,7 @@ router.put('/update/:userId', async (req, res) => {
   }
 });
 
-router.delete('/delete/:userId', async (req, res) => {
+router.delete('/delete/:userId', requireAuth, async (req, res) => {
   const userId = req.params.userId;
 
   try {
