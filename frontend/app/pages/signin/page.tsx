@@ -17,34 +17,42 @@ function Page() {
         }, 800);
     };
 
+   
+
     const loginUser = async () => {
+        const storedData = JSON.parse(localStorage.getItem("token"));
+        console.log("Stored Data:", storedData);
+        
         try {
             const res = await fetch('http://localhost:8000/api/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                   
                 },
-
                 body: JSON.stringify({
                     email,
-                    password
-                })
-            })
-
+                    password,
+                }),
+            });
+    
             if (res.ok) {
                 const data = await res.json();
-                setUserData(data)
-                //local storage
-                localStorage.setItem('user', JSON.stringify(data))
+                setUserData(data);
+    
+                // Store the token securely in localStorage
+                localStorage.setItem('accessToken', data.accessToken);
                 console.log('User logged in');
             } else {
-                console.log('User not logged in');
+                console.log('User not logged in. Status:', res.status);
+                const errorData = await res.json(); // If the server returns error details in the response body
+                console.log('Error Details:', errorData);
             }
-
         } catch (error) {
-            console.log(error)
+            console.log('Error during login:', error);
         }
-    }
+    };
 
 
 

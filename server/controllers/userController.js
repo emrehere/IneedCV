@@ -8,6 +8,16 @@ const createToken = (_id) => {
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
+    
+    const { authorization } = req.headers;
+    console.log(authorization)
+    const auth = authorization ? authorization.split(" ")[1] : null;
+
+    if (auth) {
+        console.log("auth", auth)
+    } else {
+        console.log("auth", auth)
+    }
 
     try {
         const user = await UserPattern.login(email, password);
