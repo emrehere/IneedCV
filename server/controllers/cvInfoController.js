@@ -3,11 +3,22 @@ import MyUserInfo from '../models/userInfoModel.js';
 
 async function getMyCV(req, res) {
   console.log("Fetching data from MongoDB...");
+
   try {
-    const myUserInfo = await MyUserInfo.find();
-    res.json(myUserInfo);
+    const userId = req.user._id;
+    console.log("userId", userId);
+    const userData = await MyUserInfo.findOne({ userId });
+
+    console.log("userData", userData);
+
+    if (userData) {
+      res.status(200).json([{ user: userData }]);
+    } else {
+      res.status(404).json({ error: 'User data not found' });
+    }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error during fetch user data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
@@ -18,8 +29,7 @@ async function createTemplate(req, res) {
   console.log("createTemplate", userId);
  
   try {
-
-  
+ 
 
     const { name, title, email, city, phone, image, skills, skillsInfo, languages, languagesInfo, profile, profileInfo, projects, projectsInfo, education, educationInfo, save } = req.body;
    

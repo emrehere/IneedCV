@@ -11,9 +11,9 @@ export default function Templates() {
 
 
  
-    // useEffect(() => {
-    //     fetchCvDatas();
-    // }, [])
+    useEffect(() => {
+        fetchCvDatas();
+    }, [])
     
 
     return (

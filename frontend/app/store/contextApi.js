@@ -80,8 +80,6 @@ export function InfoProvider({children}) {
             console.warn('No valid token found.');
             return;
         }
-
-        console.log('Token in fetchCvDatas:', parsedToken);
     
         fetch('http://localhost:8000/mycv', {
             method: 'GET',
@@ -92,9 +90,8 @@ export function InfoProvider({children}) {
         })
         .then(response => response.json())
         .then(data => {
-            if (data[0]?.user) {
-                setInfo(data[0]?.user);
-            }
+            console.log('Success:', data[0].user.user);
+            setInfo(data[0].user.user)            
         })
         .catch(error => {
             console.error('Error during fetchCvDatas:', error);
