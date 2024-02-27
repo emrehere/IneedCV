@@ -61,7 +61,6 @@ export function InfoProvider({children}) {
 
     const [robot, setRobot] = useState(false)
 
-    const [userToken, setUserToken] = useState({});
 
     function notRobot() {
         setInfo({ ...info, save: true})
@@ -69,15 +68,7 @@ export function InfoProvider({children}) {
 
     }
 
-    function getToken() {
-        let parsedToken;
-        const token = localStorage.getItem('token');
-        parsedToken = token ? JSON.parse(token) : null;
-        console.log("token from context",parsedToken)
-        if (parsedToken) {
-            setUserToken(parsedToken);       
-        }
-    }
+  
 
 
     function fetchCvDatas() {
@@ -110,13 +101,6 @@ export function InfoProvider({children}) {
             // Handle the error as needed
         });
     }
-    
-    
-
-   
-
-
-    
     
     
 
@@ -217,7 +201,7 @@ export function InfoProvider({children}) {
 
     return (
         <InfoContext.Provider value={{info,setInfo, saveToDatabase, deleteCV, updateCV,
-         notRobot, robot, setRobot, getToken, fetchCvDatas, userToken, setUserToken }}>
+         notRobot, robot, setRobot, fetchCvDatas }}>
             {children}
         </InfoContext.Provider>
     )

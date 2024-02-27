@@ -18,7 +18,6 @@ export default function Templates() {
 
     return (
         <div>
-            <p>Token: {userToken ? 'Token available' : 'Token not available'}</p>
             <div className="h-[1400px] w-[1000px] bg-blue-500 mx-auto my-8 p-8 ">
 
                 <GreenPart />
