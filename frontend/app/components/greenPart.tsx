@@ -4,7 +4,7 @@ import { useInfo } from "../store/contextApi";
 
 export default function GreenPart() {
 
-    const { info, setInfo, fetchCvDatas } = useInfo();
+    const { info, setInfo } = useInfo();
 
   
 
@@ -22,11 +22,7 @@ export default function GreenPart() {
         }
     };
 
-    useEffect(() => {
-        fetchCvDatas();
-
-     
-    }, []);
+  
 
    
 

@@ -3,14 +3,16 @@ import UserPattern from "../models/userLoginModel.js";
 
 
 const requireAuth = async (req, res, next) => {
+   
+
     const { authorization } = req.headers;
+   
 
     if (!authorization) {
         return res.status(401).json({ error: "Authorization token required" });
     }
 
     const token = authorization.split(" ")[1];
-    console.log("token from auth require",token)
 
     if (!token) {
         return res.status(401).json({ error: "Authorization token required" });

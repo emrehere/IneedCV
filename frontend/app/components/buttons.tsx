@@ -7,13 +7,11 @@ import Link from 'next/link';
 
 export default function Buttons() {
 
-    const { info, id, setInfo, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
+    const { info, setInfo, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
 
     const saved = info?.save;
 
-    useEffect(() => {
-        fetchCvDatas()
-    }, [])
+
 
 
 

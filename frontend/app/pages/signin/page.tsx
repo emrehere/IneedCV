@@ -21,30 +21,19 @@ function Page() {
 
     const [userData, setUserData] = useState({});
 
-    useEffect(() => {
-      const storedUserString = localStorage.getItem('user');
-      const storedUser = JSON.parse(storedUserString);
-  
-      // Check if storedUser is available
-      if (storedUser) {
-        // Update state with the user object
-        setUserData(storedUser);
-      }
-    }, []);
+   
 
    
 
     const loginUser = async () => {
-        console.log('my token' + userData.token)
+      
         
         try {
             const res = await fetch('http://localhost:8000/api/login', {
                
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + userData.token
-                   
+                    'Content-Type': 'application/json',             
                 },
                 body: JSON.stringify({
                     email,
@@ -59,6 +48,7 @@ function Page() {
     
                 // Store the token securely in localStorage
                 localStorage.setItem('token', JSON.stringify(data.token));
+
                 console.log('User logged in');    
             } else {
                 console.log('User not logged in. Status:', res.status);

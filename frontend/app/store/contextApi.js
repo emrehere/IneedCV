@@ -57,9 +57,11 @@ export function InfoProvider({children}) {
         save: false,
     }
 
-    const [id, setId] = useState("")
 
-        const [robot, setRobot] = useState(false)
+
+    const [robot, setRobot] = useState(false)
+
+    const [userToken, setUserToken] = useState({});
 
     function notRobot() {
         setInfo({ ...info, save: true})
@@ -67,20 +69,73 @@ export function InfoProvider({children}) {
 
     }
 
+    function getToken() {
+        let parsedToken;
+        const token = localStorage.getItem('token');
+        parsedToken = token ? JSON.parse(token) : null;
+        console.log("token from context",parsedToken)
+        if (parsedToken) {
+            setUserToken(parsedToken);       
+        }
+    }
+
+
+    function fetchCvDatas() {
+        const token = localStorage.getItem('token');
+        const parsedToken = token ? JSON.parse(token) : null;
+    
+        if (!parsedToken) {
+            // Handle the case where there is no valid token (optional)
+            console.warn('No valid token found.');
+            return;
+        }
+
+        console.log('Token in fetchCvDatas:', parsedToken);
+    
+        fetch('http://localhost:8000/mycv', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${parsedToken}`,
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data[0]?.user) {
+                setInfo(data[0]?.user);
+            }
+        })
+        .catch(error => {
+            console.error('Error during fetchCvDatas:', error);
+            // Handle the error as needed
+        });
+    }
+    
+    
+
+   
+
+
+    
+    
     
 
    
     
-    async function saveToDatabase() {
-        setRobot(false)
+    async function saveToDatabase() {   
+
+        setRobot(false)  
+
         try {          
             console.log('Sending data:', info);
             const response = await fetch('http://localhost:8000/templates', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+
+                 
                 },
-                body: JSON.stringify(info),
+                body: JSON.stringify( info), // Include user_id in the body
             });
     
             if (response.ok) {
@@ -156,27 +211,13 @@ export function InfoProvider({children}) {
     
 
    
-   function fetchCvDatas() {
-        fetch('http://localhost:8000/mycv')
-        .then(response => response.json())
-        .then(data => {
-            if(data[0]?.user){
-                
-                setInfo(data[0]?.user)
-                setId(data[0]?._id)
-               console.log(data[0]?._id)               
-                   
-            }
-        })
-    }
-
     
       
     
 
     return (
         <InfoContext.Provider value={{info,setInfo, saveToDatabase, deleteCV, updateCV,
-         fetchCvDatas, notRobot, robot, setRobot, id}}>
+         notRobot, robot, setRobot, getToken, fetchCvDatas, userToken, setUserToken }}>
             {children}
         </InfoContext.Provider>
     )

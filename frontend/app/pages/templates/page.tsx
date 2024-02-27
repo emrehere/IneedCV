@@ -7,25 +7,18 @@ import Buttons from '../../components/buttons';
 
 export default function Templates() {
 
-    const { info, setInfo, fetchCvDatas, id } = useInfo();
-
-    useEffect(() => {
-        fetchCvDatas()
-        
-    },[])
+    const { info, setInfo, userToken,  saveToDatabase, fetchCvDatas } = useInfo();
 
 
  
-   
-
-   
-   
-
-
+    useEffect(() => {
+        fetchCvDatas();
+    }, [])
+    
 
     return (
         <div>
-
+            <p>Token: {userToken ? 'Token available' : 'Token not available'}</p>
             <div className="h-[1400px] w-[1000px] bg-blue-500 mx-auto my-8 p-8 ">
 
                 <GreenPart />
@@ -52,7 +45,7 @@ export default function Templates() {
                             <textarea value={info?.experienceInfo} onChange={(e) => setInfo({ ...info, experienceInfo: e.target.value })} name="" placeholder='You can fill here' id="" className='w-[90%] px-2 h-[80%] mx-auto mt-2 font-medium'></textarea>
                         </div>
                         <div className='flex flex-col mt-4  h-[25%]'>
-                            <input  value={info?.education} onChange={(e) => setInfo({ ...info, education: e.target.value })} type="text" placeholder='A Title eg. Education' className='w-[90%] px-2  mx-auto font-semibold text-2xl' />
+                            <input value={info?.education} onChange={(e) => setInfo({ ...info, education: e.target.value })} type="text" placeholder='A Title eg. Education' className='w-[90%] px-2  mx-auto font-semibold text-2xl' />
                             <textarea value={info?.educationInfo} onChange={(e) => setInfo({ ...info, educationInfo: e.target.value })} name="" placeholder='You can fill here' id="" className='w-[90%] px-2 h-[50%] mx-auto mt-2 font-medium'></textarea>
                         </div>
 

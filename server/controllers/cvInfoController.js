@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import MyUserInfo from '../models/userInfoModel.js';
 
 async function getMyCV(req, res) {
+  console.log("Fetching data from MongoDB...");
   try {
     const myUserInfo = await MyUserInfo.find();
     res.json(myUserInfo);
@@ -11,17 +12,19 @@ async function getMyCV(req, res) {
 }
 
 async function createTemplate(req, res) {
-  try {
+
   
-    console.log("Received data:", req.body);
-    console.log("Received file:", req.body.id, req.body.title, req.body.name);
+
+  try {
+
+  
 
     const { name, title, email, city, phone, image, skills, skillsInfo, languages, languagesInfo, profile, profileInfo, projects, projectsInfo, education, educationInfo, save } = req.body;
    
     const user = { name, title, email, city, phone, image, skills, skillsInfo, languages, languagesInfo, profile, profileInfo, projects, projectsInfo, education, educationInfo, save };
  
     console.log("Saving data to MongoDB...", user);
-    const myUserInfoInstance = new MyUserInfo({ user });
+    const myUserInfoInstance = new MyUserInfo({ user});
     await myUserInfoInstance.save();
     
 
