@@ -25,11 +25,11 @@ export default function Buttons() {
                                 </button>
                             </div>
                             <div className='flex justify-center'>
-                                <Link href={"/mycv"} >
+                            
                                 <button onClick={updateCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 py-4 rounded-xl font-bold'>
-                                    Customize Further
+                                    Update Your Resume
                                 </button>
-                                </Link>
+                              
                             </div>
                            
                         </div>

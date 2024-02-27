@@ -60,6 +60,7 @@ export function InfoProvider({children}) {
 
 
     const [robot, setRobot] = useState(false)
+    const [fetchedUserId, setFetchedUserId] = useState(null);
 
 
     function notRobot() {
@@ -90,8 +91,8 @@ export function InfoProvider({children}) {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Success:', data[0].user.user);
-            setInfo(data[0].user.user)            
+            setInfo(data[0].user.user)
+            setFetchedUserId(data[0].user.userId)        
         })
         .catch(error => {
             console.error('Error during fetchCvDatas:', error);
@@ -115,8 +116,6 @@ export function InfoProvider({children}) {
             console.warn('No valid token found.');
             return;
         }
-
-        console.log('Token in saveToDatabase:', parsedToken);
 
         try {          
             console.log('Sending data:', info);
@@ -171,20 +170,32 @@ export function InfoProvider({children}) {
   
 
     async function updateCV() {
-       
-        try {
-            
-            console.log('Sending data:', id);
-            
-            const response = await fetch(`http://localhost:8000/update/${id}`, {
+
+        console.log("updateCV", fetchedUserId)
+
+        const token = localStorage.getItem('token');
+        const parsedToken = token ? JSON.parse(token) : null;
+    
+        if (!parsedToken) {
+            // Handle the case where there is no valid token (optional)
+            console.warn('No valid token found.');
+            return;
+        }
+
+        console.log("parsedToken from updateCV", parsedToken)
+        
+        try {        
+            const response = await fetch(`http://localhost:8000/update/${fetchedUserId}`, {
                 
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${parsedToken}`,   
                 },
                 body: JSON.stringify(info),
                 
             });
+          
             
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -192,12 +203,12 @@ export function InfoProvider({children}) {
             console.log("it works", info)
             setInfo({ ...info, save: true })
             const data = await response.json();
-            console.log('Success:', data);
-            // Handle success on the frontend
+            console.log('Success JsonResponce:', data);            
         } catch (error) {
             console.error('Error:', error);
             // Handle error on the frontend
         }
+        fetchCvDatas()
     }
     
 

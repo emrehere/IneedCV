@@ -49,15 +49,11 @@ async function createTemplate(req, res) {
 
 async function updateCV(userId, updatedData) {
   try {
-    const { ObjectId } = mongoose.Types;
+    
+    const filter = { userId: userId };
 
-    if (!ObjectId.isValid(userId)) {
-      console.error(`Invalid ObjectId: ${userId}`);
-      throw new Error("Invalid ObjectId");
-    }
-
-    const result = await MyUserInfo.findByIdAndUpdate(
-      userId,
+    const result = await MyUserInfo.findOneAndUpdate(
+      filter,
       { $set: { user: updatedData } },
       { new: true }
     );
