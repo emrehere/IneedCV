@@ -110,14 +110,24 @@ export function InfoProvider({children}) {
 
         setRobot(false)  
 
+        const token = localStorage.getItem('token');
+        const parsedToken = token ? JSON.parse(token) : null;
+    
+        if (!parsedToken) {
+            // Handle the case where there is no valid token (optional)
+            console.warn('No valid token found.');
+            return;
+        }
+
+        console.log('Token in saveToDatabase:', parsedToken);
+
         try {          
             console.log('Sending data:', info);
             const response = await fetch('http://localhost:8000/templates', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-
-                 
+                    'Authorization': `Bearer ${parsedToken}`,                
                 },
                 body: JSON.stringify( info), // Include user_id in the body
             });

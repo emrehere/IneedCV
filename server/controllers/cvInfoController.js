@@ -13,8 +13,10 @@ async function getMyCV(req, res) {
 
 async function createTemplate(req, res) {
 
-  
-
+  console.log("req.user", req.user)
+  const userId = req.user._id;
+  console.log("createTemplate", userId);
+ 
   try {
 
   
@@ -24,7 +26,7 @@ async function createTemplate(req, res) {
     const user = { name, title, email, city, phone, image, skills, skillsInfo, languages, languagesInfo, profile, profileInfo, projects, projectsInfo, education, educationInfo, save };
  
     console.log("Saving data to MongoDB...", user);
-    const myUserInfoInstance = new MyUserInfo({ user});
+    const myUserInfoInstance = new MyUserInfo({ user, userId });
     await myUserInfoInstance.save();
     
 

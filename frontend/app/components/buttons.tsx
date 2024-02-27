@@ -13,17 +13,6 @@ export default function Buttons() {
 
 
 
-
-
-
-
-
-    console.log(saved)
-
-
-
-
-
     return (
         <div>
             <div className='flex flex-row justify-center  mb-16'>
