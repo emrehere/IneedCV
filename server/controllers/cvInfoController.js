@@ -73,8 +73,10 @@ async function updateCV(userId, updatedData) {
 }
 
 async function deleteCV(userId) {
+  console.log("deleteCV FUNC", userId);
   try {
-    const result = await MyUserInfo.findByIdAndDelete(userId);
+    const filter = { userId: userId };
+    const result = await MyUserInfo.findOneAndDelete(filter);
     if (!result) {
       console.error(`User with ID ${userId} not found`);
       throw new Error("User not found");

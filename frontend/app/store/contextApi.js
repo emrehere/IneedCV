@@ -141,10 +141,28 @@ export function InfoProvider({children}) {
     }
 
     async function deleteCV() {
+
+        console.log("delteCV", fetchedUserId)
+
+        const token = localStorage.getItem('token');
+        const parsedToken = token ? JSON.parse(token) : null;
+    
+        if (!parsedToken) {
+            // Handle the case where there is no valid token (optional)
+            console.warn('No valid token found.');
+            return;
+        }
+
+        console.log("parsedToken from delteeCV", parsedToken)
+
         try {
             
-            const response = await fetch(`http://localhost:8000/delete/${id}`, {
+            const response = await fetch(`http://localhost:8000/delete/${fetchedUserId}`, {
                 method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${parsedToken}`,
+                }
             });
             
             if (!response.ok) {

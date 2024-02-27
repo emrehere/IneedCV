@@ -32,6 +32,7 @@ router.put('/update/:userId', requireAuth, async (req, res) => {
 
 router.delete('/delete/:userId', requireAuth, async (req, res) => {
   const userId = req.params.userId;
+  console.log("userId from delete routes", userId);
 
   try {
     const result = await deleteCV(userId);
