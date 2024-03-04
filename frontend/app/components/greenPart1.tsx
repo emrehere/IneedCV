@@ -5,35 +5,19 @@ import { useInfo } from "../store/contextApi";
 export default function GreenPart() {
 
     const { info, setInfo } = useInfo();
+    const [postImage, setPostImage] = useState( { myFile : ""})
 
   
 
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) =>  {
-        const file = event.target.files ? event.target.files[0] : null;
-    
-        if (file) {
-            // Assuming you are using FileReader to read the binary data from the file
-            const reader = new FileReader();
-    
-            reader.onload = () => {
-                // FileReader.result contains the binary data as ArrayBuffer
-                const binaryData: ArrayBuffer = reader.result as ArrayBuffer ;
   
-                // Create a Blob from the binary data
-                const blob = new Blob([binaryData], { type: 'image/png' });
     
-                // Create a Blob URL from the Blob
-                const blobUrl = URL.createObjectURL(blob);
-    
-                // Update the state with the Blob URL
-                setInfo({ ...info, image: blobUrl });
-            };
-    
-            // Read the file as ArrayBuffer
-            reader.readAsArrayBuffer(file);
-        }
-    };
-    
+      const handleFileUpload = async (e) => {
+        const file = e.target.files[0];
+        console.log("file",file)
+        const base64 = await convertToBase64(file);
+        console.log("base64",base64)
+        setInfo({ ...info, image: base64 })
+      }
 
 
 
@@ -47,7 +31,7 @@ export default function GreenPart() {
                         ) : ""}
 
 
-                        <input type="file" accept="image/*" onChange={handleImageChange} />
+                        <input type="file" accept="image/*" onChange={handleFileUpload} />
 
 
                     </div>
@@ -81,3 +65,17 @@ export default function GreenPart() {
         </div>
     )
 }
+
+
+function convertToBase64(file){
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result)
+      };
+      fileReader.onerror = (error) => {
+        reject(error)
+      }
+    })
+  }

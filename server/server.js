@@ -12,7 +12,8 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 7000;
 
-app.use(express.json());
+app.use(express.json({ limit: '150mb', extended: true }));
+app.use(express.urlencoded({ limit: '150mb', extended: true }));
 app.use(cors());
 
 app.use('/', userInfoRoutes);

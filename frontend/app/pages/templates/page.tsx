@@ -14,6 +14,8 @@ export default function Templates() {
     useEffect(() => {
         fetchCvDatas();
     }, [])
+
+    console.log("info",info)
     
 
     return (
