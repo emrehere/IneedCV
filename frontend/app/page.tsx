@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import NavbarWelcome from "./components/NavbarWelcome";
+import NavbarWelcome from "./components/NavbarWelcome1";
 
 
 function Page() {

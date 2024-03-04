@@ -20,17 +20,17 @@ export function InfoProvider({children}) {
         city: "",
         phone: "",   
         image: "",
-        skills: "",
+        skills: "Skills",
         skillsInfo: "",
-        languages: "",
+        languages: "Languages",
         languagesInfo: "",
-        profile: "",
+        profile: "Profile",
         profileInfo: "",
-        projects: "",
+        projects: "Projects",
         projectsInfo: "",
-        education: "",
+        education: "Education",
         educationInfo: "",
-        experience: "",
+        experience: "Experience",
         experienceInfo: "",
         save: false,       
     })
@@ -80,7 +80,7 @@ export function InfoProvider({children}) {
             // Handle the case where there is no valid token (optional)
             console.warn('No valid token found.');
             return;
-        }
+        } 
     
         fetch('http://localhost:8000/mycv', {
             method: 'GET',
@@ -91,8 +91,9 @@ export function InfoProvider({children}) {
         })
         .then(response => response.json())
         .then(data => {
+            console.log('CvDatas:', data[0].user.user);
             setInfo(data[0].user.user)
-            setFetchedUserId(data[0].user.userId)        
+
         })
         .catch(error => {
             console.error('Error during fetchCvDatas:', error);
@@ -157,7 +158,7 @@ export function InfoProvider({children}) {
 
         try {
             
-            const response = await fetch(`http://localhost:8000/delete/${fetchedUserId}`, {
+            const response = await fetch(`http://localhost:8000/delete`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -203,7 +204,7 @@ export function InfoProvider({children}) {
         console.log("parsedToken from updateCV", parsedToken)
         
         try {        
-            const response = await fetch(`http://localhost:8000/update/${fetchedUserId}`, {
+            const response = await fetch(`http://localhost:8000/update`, {
                 
                 method: 'PUT',
                 headers: {

@@ -1,12 +1,16 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 function Page() {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const router = useRouter()
+
 
 
   const saveTheUser = async () => {
@@ -25,7 +29,17 @@ function Page() {
       console.log(res)
 
       if (res.ok) {
+        
+        const data = await res.json();
+        console.log(data)
+
+        // Store the token securely in localStorage
+
+        localStorage.setItem('token', JSON.stringify(data.token));
+
         console.log('user saved')
+
+        router.push('/pages/templates')
       } else {
         console.log('user not saved')
       }
@@ -35,8 +49,18 @@ function Page() {
     }
 
     }
-  
 
+    useEffect(() => {
+      
+      const mytoken = localStorage.getItem('token')
+      console.log(mytoken)
+      if (mytoken !== null) {
+        router.push('/pages/templates')
+      }
+
+    },[ router ])
+  
+  
 
   return (
     <div style={{ backgroundImage: "url('/hired1.webp')" }} className='w-full min-h-screen

@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from 'react'
 import { useInfo } from "../../store/contextApi";
-import GreenPart from '../../components/greenPart';
+import GreenPart from '../../components/greenPart1';
 import Buttons from '../../components/buttons';
 
 

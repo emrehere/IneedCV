@@ -11,13 +11,13 @@ const router = express.Router();
 
 
 
-router.get("/mycv", requireAuth, getMyCV);
+router.get("/mycv", requireAuth,  getMyCV);
 
 router.post("/templates", requireAuth, createTemplate);
 
-router.put('/update/:userId', requireAuth, async (req, res) => {
-  const userId = req.params.userId;
-  console.log("userId from update routes", userId);
+router.put('/update', requireAuth, async (req, res) => {
+  const userId = req.user._id;
+  console.log("update route", userId);
   const updatedData = req.body;
   console.log("updatedData from update routes", updatedData);
 
@@ -30,9 +30,10 @@ router.put('/update/:userId', requireAuth, async (req, res) => {
   }
 });
 
-router.delete('/delete/:userId', requireAuth, async (req, res) => {
-  const userId = req.params.userId;
-  console.log("userId from delete routes", userId);
+router.delete('/delete', requireAuth, async (req, res) => {
+  const userId = req.user._id;
+
+  console.log("delete route", userId);
 
   try {
     const result = await deleteCV(userId);

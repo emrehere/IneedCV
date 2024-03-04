@@ -49,7 +49,7 @@ async function createTemplate(req, res) {
 
 async function updateCV(userId, updatedData) {
   try {
-    
+    console.log("updateCV FUNC", userId, updatedData);
     const filter = { userId: userId };
 
     const result = await MyUserInfo.findOneAndUpdate(

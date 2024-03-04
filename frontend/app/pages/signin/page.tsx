@@ -60,6 +60,7 @@ function Page() {
         }
     };
 
+    console.log(userData);
 
 
 
