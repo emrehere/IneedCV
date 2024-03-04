@@ -6,8 +6,7 @@ export default function GreenPart() {
 
     const { info } = useInfo();
 
-    console.log(info.image)
-
+  
   
 
     return (
@@ -15,7 +14,9 @@ export default function GreenPart() {
             <div className="bg-green-500 h-[25%] text-md flex flex-row ">
                 <div className="w-[30%] px-8  flex items-center" >
                     <div className='rounded-xl'>
-                        <img src={info?.image} alt="Uploaded Image" className='h-80 object-cover mt-6 rounded-xl' />
+                        <img src={ info?.image} alt="Uploaded Image" className='h-80 object-cover mt-6 rounded-xl' />
+                        
+                        
                     </div>
 
 

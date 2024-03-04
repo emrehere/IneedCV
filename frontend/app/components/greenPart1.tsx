@@ -8,25 +8,34 @@ export default function GreenPart() {
 
   
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-
-     
-
-
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) =>  {
+        const file = event.target.files ? event.target.files[0] : null;
+    
         if (file) {
-
-            console.log(file)
-           
-            setInfo({ ...info, image: URL.createObjectURL(file) });
+            // Assuming you are using FileReader to read the binary data from the file
+            const reader = new FileReader();
+    
+            reader.onload = () => {
+                // FileReader.result contains the binary data as ArrayBuffer
+                const binaryData: ArrayBuffer = reader.result as ArrayBuffer ;
+  
+                // Create a Blob from the binary data
+                const blob = new Blob([binaryData], { type: 'image/png' });
+    
+                // Create a Blob URL from the Blob
+                const blobUrl = URL.createObjectURL(blob);
+    
+                // Update the state with the Blob URL
+                setInfo({ ...info, image: blobUrl });
+            };
+    
+            // Read the file as ArrayBuffer
+            reader.readAsArrayBuffer(file);
         }
     };
+    
 
-  
 
-   
-
- 
 
     return (
         <div>
