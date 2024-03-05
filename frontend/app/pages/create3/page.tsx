@@ -3,6 +3,7 @@ import { use, useEffect, useState } from "react"
 import { useInfo } from "../../store/contextApi"
 import Link from "next/link"
 import GreenPart from "../../components/greenPart2"
+import Buttons from "@/app/components/buttons"
 
 export default function MyCV() {
 
@@ -100,6 +101,7 @@ export default function MyCV() {
                     </div>
                 </div>
             </div>
+            <Buttons hrefFromParent={"/pages/mytemplate3"} />
         </div>
     )
 }

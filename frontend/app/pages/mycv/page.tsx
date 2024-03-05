@@ -28,7 +28,7 @@ function MyCV({ componentRef }: MyCVProps) {
 
     return (
         <div>
-            <div ref={componentRef} className=" h-[1200px] w-[1000px]   mx-auto my-8 p-8 ">
+            <div ref={componentRef} className=" h-[1240px] w-[1000px]   mx-auto my-8 p-8 ">
 
                 <GreenPart />
 

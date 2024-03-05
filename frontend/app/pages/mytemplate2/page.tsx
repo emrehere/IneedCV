@@ -22,7 +22,7 @@ function MyCV({ componentRef }: MyCVProps) {
 
     return (
         <div ref={componentRef} className="  w-[1000px]   mx-auto" >
-            <div  className=" border-gray-500 h-[1200px] border-2 border-opacity-40  mx-4 my-4 p-4 ">
+            <div  className=" border-gray-500 h-[1240px] border-2 border-opacity-40  mx-4 my-4 p-4 ">
 
                 <div className="flex flex-row  w-[100%]    ">
                     <div className='w-[35%]    p-4 '>

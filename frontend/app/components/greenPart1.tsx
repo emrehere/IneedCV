@@ -1,16 +1,9 @@
 "use client"
-import { useEffect, useState } from 'react'
 import { useInfo } from "../store/contextApi";
 
 export default function GreenPart() {
 
     const { info, setInfo } = useInfo();
-  
-
-  
-
-  
-    
       const handleFileUpload = async (e) => {
         const file = e.target.files[0];
         console.log("file",file)
@@ -19,16 +12,14 @@ export default function GreenPart() {
         setInfo({ ...info, image: base64 })
       }
 
-
-
     return (
         <div>
             <div className="border-gray-500 border-2 border-opacity-40 h-[25%] flex flex-row ">
                 <div className="w-[30%] px-8  flex items-center border-2 border-gray-500 border-opacity-40 " >
                     <div className='rounded-xl'>
-                        {info?.image ? (
+                        {info?.image && (
                             <img src={info?.image} alt="Uploaded Image" className='h-80 object-cover mt-6 rounded-xl' />
-                        ) : ""}
+                        ) }
 
 
                         <input type="file" accept="image/*" onChange={handleFileUpload} />
@@ -65,7 +56,6 @@ export default function GreenPart() {
         </div>
     )
 }
-
 
 function convertToBase64(file){
     return new Promise((resolve, reject) => {
