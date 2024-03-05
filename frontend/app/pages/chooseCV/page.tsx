@@ -32,28 +32,30 @@ function Page() {
 
   return (
     <div>
-      <p>Choose your CV and Get it printed in less than 2 minutes</p>
+      <div className='flex justify-center text-3xl font-bold mt-8 text-red-500' >
+        <p>Choose your CV and Get it printed in less than 2 minutes !</p>
+      </div>
       <div className='w-[100vw]'>
 
-        <div className='flex justify-center mx-auto w-[70vw] mt-20 '>
+        <div className='flex justify-center mx-auto w-[70vw] mt-12 '>
           <div>
             <img key={1} onClick={() => clickImage(1)} className={`${img1} h-[60vh]`} src="/2.webp" alt=" cv 2 " />
             <div className={img1 === "" ? "hidden" : "flex justify-center "}>
-            <ChooseCVbutton hrefSend="/pages/create2" />
+              <ChooseCVbutton hrefSend="/pages/create2" />
             </div>
           </div>
           <div>
             <img key={2} onClick={() => clickImage(2)} className={`${img2} h-[62vh] -mt-[2vh]`} src="/1.webp" alt=" cv 1 " />
             <div className={img2 === "" ? "hidden" : "flex justify-center "}>
-            <ChooseCVbutton hrefSend="/pages/templates" />
+              <ChooseCVbutton hrefSend="/pages/templates" />
             </div>
           </div>
           <div>
             <img key={3} onClick={() => clickImage(3)} className={`${img3} h-[60vh]`} src="/3.webp" alt=" cv 3 " />
             <div className={img3 === "" ? "hidden" : "flex justify-center "}>
-            <ChooseCVbutton hrefSend="/pages/create3" />
+              <ChooseCVbutton hrefSend="/pages/create3" />
             </div>
-           
+
           </div>
         </div>
 

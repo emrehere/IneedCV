@@ -1,6 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 
+import { useRouter } from 'next/navigation'
+
+
 
 
 
@@ -9,6 +12,8 @@ function Page() {
     const [inputType, setInputType] = useState("password")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const router = useRouter()
  
 
     const toggleInputType = () => {
@@ -20,6 +25,16 @@ function Page() {
 
 
     const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+      
+        const mytoken = localStorage.getItem('token')
+        console.log(mytoken)
+        if (mytoken !== null) {
+          router.push('/pages/chooseCV')
+        }
+  
+      },[ router ])
 
    
 

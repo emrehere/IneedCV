@@ -1,6 +1,6 @@
-import { set } from "lodash";
+
 import React,{createContext,useState,useEffect, useContext} from "react";
-import { flushSync } from "react-dom";
+
 
 const InfoContext = createContext();
 
@@ -61,7 +61,7 @@ export function InfoProvider({children}) {
 
     const [robot, setRobot] = useState(false)
     const [fetchedUserId, setFetchedUserId] = useState(null);
-
+   
 
     function notRobot() {
         setInfo({ ...info, save: true})
@@ -69,7 +69,6 @@ export function InfoProvider({children}) {
 
     }
 
-  
 
 
     function fetchCvDatas() {
@@ -238,7 +237,7 @@ export function InfoProvider({children}) {
 
     return (
         <InfoContext.Provider value={{info,setInfo, saveToDatabase, deleteCV, updateCV,
-         notRobot, robot, setRobot, fetchCvDatas }}>
+         notRobot, robot, setRobot, fetchCvDatas, initialInfo }}>
             {children}
         </InfoContext.Provider>
     )
