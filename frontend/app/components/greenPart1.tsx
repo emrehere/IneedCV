@@ -5,7 +5,7 @@ import { useInfo } from "../store/contextApi";
 export default function GreenPart() {
 
     const { info, setInfo } = useInfo();
-    const [postImage, setPostImage] = useState( { myFile : ""})
+  
 
   
 
