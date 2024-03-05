@@ -25,20 +25,23 @@ export default function Buttons() {
                                 </button>
                             </div>
                             <div className='flex justify-center'>
-                            
-                                <button onClick={updateCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 py-4 rounded-xl font-bold'>
-                                    Update Your Resume
-                                </button>
-                              
+                                <Link href="/pages/mycv" >
+                                    <button onClick={updateCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 py-4 rounded-xl font-bold'>
+                                        Update and Proceed
+                                    </button>
+                                </Link>
+
                             </div>
-                           
+
                         </div>
                     ) : (
                         // Content to show when saved is false
                         <div className='flex justify-center'>
+
                             <button onClick={notRobot} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 py-4 rounded-xl font-bold'>
                                 Save Your Resume Now
                             </button>
+
 
                         </div>
                     )}
