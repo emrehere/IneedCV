@@ -6,6 +6,7 @@ import GreenPart from "../../components/greenPart2"
 import PrintFunc from "../../components/printFunc"
 import { useReactToPrint } from 'react-to-print';
 import { RefObject } from 'react';
+import RedButtons from "@/app/components/RedButtons"
 
 
 
@@ -86,17 +87,8 @@ export default function Templates() {
     return (
         <div>
             <MyCV componentRef={componentRef} />
-            <div className="flex flex-row justify-center space-x-8">
-                <button className='bg-red-500 text-white text-2xl py-4 font-semibold w-[25vw] 
-        rounded-xl items-center flex justify-center mb-8' onClick={handlePrint}>
-                    Print this out!
-                </button>
-                <Link href="/pages/templates">
-                <button className='bg-red-500 text-white text-2xl py-4 font-semibold w-[25vw] 
-        rounded-xl items-center flex justify-center mb-8' >
-                    Go Back to Update
-                </button>
-                </Link>
+            <div>
+                <RedButtons hrefComing="/pages/templates" handlePrint={handlePrint} />
             </div>
 
         </div>

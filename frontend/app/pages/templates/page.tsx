@@ -53,7 +53,7 @@ export default function Templates() {
                     </div>
                 </div>
             </div>
-            <Buttons />
+            <Buttons hrefFromParent={"/pages/mycv"} />
         </div>
     )
 }

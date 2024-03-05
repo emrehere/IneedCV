@@ -1,10 +1,16 @@
 "use client"
-import { use, useEffect, useState } from "react"
+import { use, useEffect, useState, useRef, RefObject } from "react"
 import { useInfo } from "../../store/contextApi"
 import Link from "next/link"
 import GreenPart from "../../components/greenPart2"
+import { useReactToPrint } from "react-to-print"
+import RedButtons from "@/app/components/RedButtons"
 
-export default function MyCV() {
+type MyCVProps = {
+    componentRef: RefObject<HTMLDivElement>;
+}
+
+function MyCV({ componentRef }: MyCVProps) {
 
     const { info, fetchCvDatas } = useInfo()
 
@@ -15,11 +21,11 @@ export default function MyCV() {
 
 
     return (
-        <div>
-            <div className="h-[1400px] w-[1000px] border-gray-500 border-2 border-opacity-40  mx-auto my-8 p-8 ">
+        <div ref={componentRef} className="  w-[1000px]   mx-auto" >
+            <div  className=" border-gray-500 h-[1200px] border-2 border-opacity-40  mx-4 my-4 p-4 ">
 
-                <div className="flex flex-row w-[100%] h-full border-gray-500 border-2 border-opacity-40  ">
-                    <div className='w-[30%]    p-4 '>
+                <div className="flex flex-row  w-[100%]    ">
+                    <div className='w-[35%]    p-4 '>
                         <div className='rounded-xl'>
                             <img src={info?.image} alt="Uploaded Image" className='h-80 object-cover mt-6 rounded-xl' />
                         </div>
@@ -51,7 +57,7 @@ export default function MyCV() {
                         </div>
 
                     </div>
-                    <div className='w-[70%]    p-4' >
+                    <div className='w-[65%]    p-4' >
                         <div className='flex border-gray-500 border-2 border-opacity-20 flex-col p-4  my-8'>
                             <p className=" text-xl text-red-500 font-semibold pb-2" >{info?.profile}</p>
                             <p>{info?.profileInfo}</p>
@@ -79,4 +85,23 @@ export default function MyCV() {
             </div>
         </div>
     )
+}
+
+
+export default function Templates() {
+    const componentRef = useRef<HTMLDivElement>(null);
+
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+
+    return (
+        <div>
+            <MyCV componentRef={componentRef} />
+            <div>
+                <RedButtons hrefComing="/pages/create2" handlePrint={handlePrint} />
+            </div>
+
+        </div>
+    );
 }

@@ -4,8 +4,12 @@ import { useInfo } from "../store/contextApi";
 import { set } from 'lodash';
 import Link from 'next/link';
 
+interface ButtonsProps {
+    hrefFromParent: string;
+}
 
-export default function Buttons() {
+export default function Buttons({ hrefFromParent }: ButtonsProps) {
+    
 
     const { info, setInfo, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
 
@@ -25,7 +29,7 @@ export default function Buttons() {
                                 </button>
                             </div>
                             <div className='flex justify-center'>
-                                <Link href="/pages/mycv" >
+                                <Link href={hrefFromParent} >
                                     <button onClick={updateCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 py-4 rounded-xl font-bold'>
                                         Update and Proceed
                                     </button>
