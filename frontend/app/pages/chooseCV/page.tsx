@@ -1,12 +1,29 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ChooseCVbutton from '@/app/components/chooseCVbutton';
+import { useInfo } from '../../store/contextApi';
+import { useRouter } from 'next/navigation';
 
 function Page() {
 
   const [img1, setImg1] = useState("");
   const [img2, setImg2] = useState("");
   const [img3, setImg3] = useState("");
+
+  const {  token, setToken, checkToken  } = useInfo()
+
+  const router = useRouter()
+
+  useEffect(() => {
+      
+    checkToken()
+
+    if (!token) {
+      router.push('/') 
+    }
+
+  },[ router, token ])
+
 
   const clickImage = (index: number) => {
     const normalStyle = ""
@@ -32,7 +49,10 @@ function Page() {
 
   return (
     <div>
-      <div className='flex justify-center text-3xl font-bold mt-8 text-red-500' >
+     {
+        token && (
+          <div>
+             <div className='flex justify-center text-3xl font-bold mt-8 text-red-500' >
         <p>Choose your CV and Get it printed in less than 2 minutes !</p>
       </div>
       <div className='w-[100vw]'>
@@ -60,6 +80,9 @@ function Page() {
         </div>
 
       </div>
+          </div>
+        )
+     }
     </div>
   )
 }

@@ -239,10 +239,6 @@ export function InfoProvider({ children }) {
 
 
 
-
-
-
-
     return (
         <InfoContext.Provider value={{
             info, setInfo, saveToDatabase, deleteCV, updateCV,

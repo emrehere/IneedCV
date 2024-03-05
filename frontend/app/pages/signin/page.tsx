@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/navigation'
 
+import { useInfo } from '../../store/contextApi'
+
 
 
 
@@ -14,6 +16,8 @@ function Page() {
     const [password, setPassword] = useState("")
 
     const router = useRouter()
+
+    const {token, setToken, checkToken  } = useInfo()
  
 
     const toggleInputType = () => {
@@ -26,15 +30,17 @@ function Page() {
 
     const [userData, setUserData] = useState({});
 
+
+
     useEffect(() => {
-      
-        const mytoken = localStorage.getItem('token')
-        console.log(mytoken)
-        if (mytoken !== null) {
+       
+        checkToken()
+
+        if (token !== null && token !== undefined && token !== '') {
           router.push('/pages/chooseCV')
         }
   
-      },[ router ])
+      },[ router, token ])
 
    
 

@@ -3,12 +3,15 @@ import Link from 'next/link'
 import NavbarWelcome from "./components/NavbarWelcome1";
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useInfo } from './store/contextApi'
 
 
 
 function Page() {
 
-  const [token, settoken] = useState('')
+  
+
+  const { token, checkToken  } = useInfo()
 
   
 
@@ -16,13 +19,9 @@ function Page() {
 
   useEffect(() => {
 
-    const mytoken = localStorage.getItem('token') ?? '';
-    console.log(mytoken)
-    settoken(mytoken)
+    checkToken()
 
-
-
-  }, [router])
+  }, [router, token])
 
 
 
