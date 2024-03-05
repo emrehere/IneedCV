@@ -5,18 +5,15 @@ import { useInfo } from '../store/contextApi'
 
 function NavbarWelcome() {
 
-  const [token, setToken] = useState<string | null>(null)
+  
 
-  const { initialInfo, setInfo } = useInfo()
+  const { initialInfo, setInfo, token, setToken, checkToken  } = useInfo()
 
   const router = useRouter()
 
   useEffect(() => {
       
-    const mytoken = localStorage.getItem('token') ?? '';
-    console.log(mytoken)
-    setToken(mytoken)
-   
+    checkToken()
 
   },[ router, token ])
 

@@ -39,7 +39,7 @@ function Page() {
 
         console.log('user saved')
 
-        router.push('/pages/templates')
+        router.push('/pages/chooseCV')
       } else {
         console.log('user not saved')
       }

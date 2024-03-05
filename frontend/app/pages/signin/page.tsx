@@ -65,6 +65,7 @@ function Page() {
                 localStorage.setItem('token', JSON.stringify(data.token));
 
                 console.log('User logged in');    
+                router.push('/pages/chooseCV')
             } else {
                 console.log('User not logged in. Status:', res.status);
                 const errorData = await res.json(); // If the server returns error details in the response body
