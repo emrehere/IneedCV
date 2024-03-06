@@ -49,11 +49,11 @@ function NavbarWelcome() {
         ) : (
           <div>
              <Link href={'/pages/chooseCV'}>
-            <button className='hover:bg-white hover:bg-opacity-90 hover:text-[#070717]  bg-[#070717] px-12 
-            min-h-16 h-[12vh] font-semibold text-xl tracking-wider'>See All Templates</button>
+            <button className='hover:bg-white hover:bg-opacity-90 hover:text-[#070717]  bg-[#070717] px-3 sm:px-12 
+            min-h-16 h-[12vh] font-semibold text-xl tracking-wider'>Choose CV</button>
         </Link>
         <Link href={''}>
-            <button onClick={signOut} className='hover:bg-white hover:bg-opacity-90 h-[12vh] hover:text-[#070717] bg-[#070717] px-12
+            <button onClick={signOut} className='hover:bg-white hover:bg-opacity-90 h-[12vh] hover:text-[#070717] bg-[#070717] px-3 sm:px-12
              min-h-16 font-semibold text-xl tracking-wider'>Sign out</button>
         </Link>
           </div>

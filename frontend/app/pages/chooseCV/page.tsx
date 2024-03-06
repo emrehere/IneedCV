@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import ChooseCVbutton from '@/app/components/chooseCVbutton';
 import { useInfo } from '../../store/contextApi';
 import { useRouter } from 'next/navigation';
+import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { FaArrowAltCircleRight } from "react-icons/fa";
 
 function Page() {
 
@@ -52,13 +54,13 @@ function Page() {
     <div>
       {
         token && (
-          <div className='bg-[#070717] min-h-screen pb-[15vh] overflow-x-hidden'>
-            <div className='flex justify-center text-3xl font-bold mt-12 text-white' >
+          <div className='bg-[#070717] min-h-screen pb-[5vh] overflow-x-hidden'>
+            <div className='flex justify-center text-2xl sm:text-3xl font-bold my-12 text-white w-[90vw] mx-auto' >
               <p>Choose your CV and Get it printed in less than 2 minutes !</p>
             </div>
-            <div className='w-[100vw] bg-blue-50 h-[90vh] '>
+            <div className='w-[100vw] bg-blue-50 sm:h-[90vh] h-[85vh]'>
 
-              <div className='flex justify-center mx-auto w-[70vw] pt-[10vh] mt-4 '>
+              <div className=' hidden sm:flex justify-center mx-auto w-[70vw] pt-[10vh] mt-4 '>
                 <div>
                   <img key={1} onClick={() => clickImage(1)} className={`${img1} h-[60vh]`} src="/2.webp" alt=" cv 2 " />
                   <div className={img1 === "" ? "hidden" : "flex justify-center "}>
@@ -78,6 +80,32 @@ function Page() {
                   </div>
 
                 </div>
+              </div>
+              <div className=' sm:hidden flex items-center  mx-auto  pt-[10vh]  '>
+                  <div className='text-4xl absolute left-2 text-red-500 '>
+                  <FaArrowAltCircleLeft />
+                  </div>
+                  <div className='hidden'>
+                  <img key={1} onClick={() => clickImage(1)} className={`${img1} w-[90vw] `} src="/2.webp" alt=" cv 2 " />
+                  <div className="flex justify-center ">
+                    <ChooseCVbutton hrefSend="/pages/create2" />
+                  </div>
+                </div>
+                <div>
+                  <img key={2} onClick={() => clickImage(2)} className={`  w-full -mt-[2vh]`} src="/1.webp" alt=" cv 1 " />
+                  <div className="flex justify-center mt-4">
+                    <ChooseCVbutton hrefSend="/pages/templates" />
+                  </div>
+                </div>
+                <div className='hidden'>
+                  <img key={3} onClick={() => clickImage(3)} className={`${img3} w-[90vw] `} src="/3.webp" alt=" cv 3 " />
+                  <div className="flex justify-center ">
+                    <ChooseCVbutton hrefSend="/pages/create3" />
+                  </div>
+                  </div>
+                  <div className='text-4xl flex justify-end w-[90vw] absolute right-2 text-red-500 '>
+                  <FaArrowAltCircleRight />
+                  </div>
               </div>
 
             </div>
