@@ -90,7 +90,7 @@ function Page() {
 
 
     return (
-        <div className='h-[105vh] bg-[url("/signin5.webp")] bg-cover '>
+        <div className='h-[105vh] sm:bg-[url("/signin5.webp")] bg-[url("/signin5_mobile.webp")] bg-cover '>
             <div className='h-[80vh] w-full flex flex-col'>
                 <div className='flex-grow sm:flex hidden' ></div>
                 <div className='flex flex-row mt-[20vh]'>
