@@ -128,10 +128,10 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
             }
         })
             .then(response => response.json())
+            
             .then(data => {
                 console.log('CvDatas:', data[0].user.user);
                 setInfo(data[0].user.user)
-
             })
             .catch(error => {
                 console.error('Error during fetchCvDatas:', error);
@@ -145,8 +145,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
 
     async function saveToDatabase() {
 
-        setRobot(false)
-
+        setRobot(false)       
         const token = localStorage.getItem('token');
         const parsedToken = token ? JSON.parse(token) : null;
 
@@ -157,7 +156,8 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
         }
 
         try {
-            console.log('Sending data:', info);
+            console.log('Sending data: check here', info);
+            
             const response = await fetch('http://localhost:8000/templates', {
                 method: 'POST',
                 headers: {
@@ -165,12 +165,13 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
                     'Authorization': `Bearer ${parsedToken}`,
                 },
                 body: JSON.stringify(info), // Include user_id in the body
+                
             });
 
             if (response.ok) {
-                console.log('Data saved successfully from frontend');
-                setInfo({ ...info, save: true })
+                console.log('Data saved successfully from frontend');                             
                 fetchCvDatas()
+
             } else {
                 console.error('Failed to save data:', response.statusText);
             }

@@ -1,19 +1,32 @@
 "use client"
 import { useEffect, useState } from 'react'
 import { useInfo } from "../store/contextApi";
-import { set } from 'lodash';
 import Link from 'next/link';
+import  CheckBox from "./shadcnUI/checkbox";
 
 interface ButtonsProps {
     hrefFromParent: string;
 }
 
+
+
 export default function Buttons({ hrefFromParent }: ButtonsProps) {
-    
+
 
     const { info, setInfo, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
 
+    const [checked, setChecked] = useState(false);
+
     const saved = info?.save;
+
+    
+    const saveCheck = () => {
+        if (checked) {
+            saveToDatabase();
+        } else {
+            alert("Please confirm that you are a human")
+        }
+    }
 
 
 
@@ -56,9 +69,13 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
 
             {
                 robot ? <div className='flex justify-center'>
-                    <div className='bg-blue-100 h-[30vh]  rounded-2xl -mt-[30vh] w-[75vw]'>
-                        <p className='text-red-500 text-xl '>Please check the checkbox</p>
-                        <p onClick={saveToDatabase}>I m not</p>
+                    <div className='bg-blue-100 h-[30vh]  rounded-2xl -mt-[30vh] w-[55vw] flex items-center
+                    justify-center flex-col'>
+                        
+                        <div className='mb-4'>
+                            <CheckBox checked={checked} setChecked={setChecked} />
+                        </div>
+                        <button onClick={saveCheck} className='bg-blue-500 hover:bg-blue-600 text-white text-lg w-[18vw] mx-2 py-2 rounded-xl font-bold'>Save Now</button>
                     </div>
 
                 </div> : null

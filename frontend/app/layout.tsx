@@ -5,8 +5,6 @@ import "./globals.css";
 import Head from "next/head";
 import React from "react";
 import NavbarWelcome from "./components/NavbarWelcome1";
-
-
 import { InfoProvider } from "../app/store/contextApi"
 
 

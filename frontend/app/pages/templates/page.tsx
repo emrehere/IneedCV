@@ -6,6 +6,7 @@ import Buttons from '../../components/buttons';
 import { useRouter } from "next/navigation"
 
 
+
 export default function Templates() {
 
     const { info, setInfo, fetchCvDatas, token, setToken } = useInfo();
