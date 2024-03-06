@@ -1,8 +1,46 @@
 
 import React, { createContext, useState, useEffect, useContext } from "react";
 
+interface Info {
+    name: string;
+    title: string;
+    email: string;
+    city: string;
+    phone: string;
+    image: string;
+    skills: string;
+    skillsInfo: string;
+    languages: string;
+    languagesInfo: string;
+    profile: string;
+    profileInfo: string;
+    projects: string;
+    projectsInfo: string;
+    education: string;
+    educationInfo: string;
+    experience: string;
+    experienceInfo: string;
+    save: boolean;
+}
 
-const InfoContext = createContext();
+interface InfoContextProps {
+    info: Info;
+    setInfo: React.Dispatch<React.SetStateAction<Info>>;
+    saveToDatabase: () => Promise<void>;
+    deleteCV: () => Promise<void>;
+    updateCV: () => Promise<void>;
+    notRobot: () => void;
+    robot: boolean;
+    setRobot: React.Dispatch<React.SetStateAction<boolean>>;
+    fetchCvDatas: () => void;
+    initialInfo: Info;
+    token: string | null;
+    setToken: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+const InfoContext = createContext<InfoContextProps>({} as InfoContextProps);
+
+
 
 export function useInfo() {
 
@@ -11,9 +49,9 @@ export function useInfo() {
 }
 
 
-export function InfoProvider({ children }) {
+export function InfoProvider({ children }: { children: React.ReactNode }) {
 
-    const [info, setInfo] = useState({
+    const [info, setInfo] = useState<Info>({
         name: "",
         title: "",
         email: "",
@@ -35,7 +73,9 @@ export function InfoProvider({ children }) {
         save: false,
     })
 
-    const initialInfo = {
+   
+
+    const initialInfo: Info =  {
         name: "",
         title: "",
         email: "",
@@ -57,12 +97,9 @@ export function InfoProvider({ children }) {
         save: false,
     }
 
-    const [token, setToken] = useState(null);
-
-
-
-    const [robot, setRobot] = useState(false)
-    const [fetchedUserId, setFetchedUserId] = useState(null);
+    const [token, setToken] = useState<string | null>(null);
+    const [robot, setRobot] = useState<boolean>(false);
+    const [fetchedUserId, setFetchedUserId] = useState<number | null>(null);
 
 
     function notRobot() {

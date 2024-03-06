@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 
 export default function Templates() {
 
-    const { info, setInfo, userToken, saveToDatabase, fetchCvDatas, token, setToken } = useInfo();
+    const { info, setInfo, fetchCvDatas, token, setToken } = useInfo();
 
 
     const router = useRouter()

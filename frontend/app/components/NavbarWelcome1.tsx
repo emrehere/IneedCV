@@ -12,6 +12,14 @@ function NavbarWelcome() {
 
   const router = useRouter()
 
+  useEffect(() => {
+    
+    const mytoken = localStorage.getItem('token') ?? '';
+
+    setToken(mytoken)
+
+  }, [router, token])
+
  
 
   const signOut = () => {
