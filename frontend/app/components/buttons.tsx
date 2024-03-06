@@ -19,7 +19,7 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
 
     return (
         <div>
-            <div className='flex flex-row justify-center  mb-16'>
+            <div className='flex flex-row justify-center  mt-4'>
                 <div>
                     {saved ? (
                         <div className='flex flex-row'>
@@ -56,7 +56,7 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
 
             {
                 robot ? <div className='flex justify-center'>
-                    <div className='bg-blue-100 h-[30vh] mb-12 rounded-2xl -mt-[30vh] w-[75vw]'>
+                    <div className='bg-blue-100 h-[30vh]  rounded-2xl -mt-[30vh] w-[75vw]'>
                         <p className='text-red-500 text-xl '>Please check the checkbox</p>
                         <p onClick={saveToDatabase}>I m not</p>
                     </div>

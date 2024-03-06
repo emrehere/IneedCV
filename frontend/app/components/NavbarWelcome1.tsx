@@ -7,15 +7,12 @@ function NavbarWelcome() {
 
   
 
-  const { initialInfo, setInfo, token, setToken, checkToken  } = useInfo()
+  const { initialInfo, setInfo, token, setToken } = useInfo()
+
 
   const router = useRouter()
 
-  useEffect(() => {
-      
-    checkToken()
-
-  },[ router, token ])
+ 
 
   const signOut = () => {
     localStorage.removeItem('token')

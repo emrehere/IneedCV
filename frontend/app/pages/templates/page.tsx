@@ -8,15 +8,18 @@ import { useRouter } from "next/navigation"
 
 export default function Templates() {
 
-    const { info, setInfo, userToken, saveToDatabase, fetchCvDatas, token, checkToken } = useInfo();
+    const { info, setInfo, userToken, saveToDatabase, fetchCvDatas, token, setToken } = useInfo();
+
 
     const router = useRouter()
 
     useEffect(() => {
 
-        checkToken()
-
-        if (!token) {
+        const mytoken = localStorage.getItem('token') ?? '';
+        console.log(mytoken)
+        console.log("token checked")
+        setToken(mytoken)
+        if (!mytoken) {
             router.push('/')
         }
 
@@ -33,11 +36,11 @@ export default function Templates() {
 
 
     return (
-        <div>
+        <div className='bg-[#070717] min-h-screen'>
             {
                 token && (
-                    <div>
-                        <div className="h-[1400px] w-[1000px] border-2 bg-gray-100 border-gray-500 border-opacity-40 mx-auto my-8 p-8 ">
+                    <div className='py-12'>
+                        <div className="h-[1400px] w-[1000px] border-2 bg-gray-100 border-gray-500 border-opacity-40 mx-auto  p-8 ">
 
                             <GreenPart />
 

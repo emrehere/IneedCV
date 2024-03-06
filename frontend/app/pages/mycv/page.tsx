@@ -15,15 +15,18 @@ type MyCVProps = {
 
 function MyCV({ componentRef }: MyCVProps) {
 
-    const { info, fetchCvDatas, token, checkToken } = useInfo()
+    const { info, fetchCvDatas, token, setToken } = useInfo()
+  
 
     const router = useRouter()
 
     useEffect(() => {
 
-        checkToken()
-
-        if (!token) {
+        const mytoken = localStorage.getItem('token') ?? '';
+        console.log(mytoken)
+        console.log("token checked")
+        setToken(mytoken)
+        if (!mytoken) {
             router.push('/')
         }
 
@@ -38,11 +41,11 @@ function MyCV({ componentRef }: MyCVProps) {
 
 
     return (
-        <div>
+        <div className=" bg-[#070717] min-h-screen h-full ">
             {
                 token && (
-                    <div>
-                        <div ref={componentRef} className=" h-[1240px] w-[1000px]   mx-auto my-8 p-8 ">
+                    <div className="pt-12 pb-4">
+                        <div ref={componentRef} className=" h-[1240px] w-[1000px] bg-white  mx-auto  p-8 ">
 
                             <GreenPart />
 

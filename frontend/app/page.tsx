@@ -3,7 +3,7 @@ import Link from 'next/link'
 import NavbarWelcome from "./components/NavbarWelcome1";
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { useInfo } from './store/contextApi'
+
 
 
 
@@ -11,7 +11,7 @@ function Page() {
 
   
 
-  const { token, checkToken  } = useInfo()
+  const [token, setToken] = useState(null);
 
   
 
@@ -19,9 +19,12 @@ function Page() {
 
   useEffect(() => {
 
-    checkToken()
+    const mytoken = localStorage.getItem('token') ?? '';
+    console.log(mytoken)
+    console.log("token checked")
+    setToken(mytoken)
 
-  }, [router, token])
+}, [router, token])
 
 
 
@@ -29,7 +32,7 @@ function Page() {
 
     <div style={{ backgroundImage: "url('/home-banner.webp')" }}
       className=' h-[100vh] bg-[#070717] text-white' >
-      <NavbarWelcome />
+      
       <div className='flex flex-col w-[55vw] justify-center h-[70vh] items-center text-lg'>
         <p className='text-4xl font-bold'> Only 2% of resumes make it past the </p>
         <p className='text-4xl font-bold'>first round. Be in the top 2%</p>

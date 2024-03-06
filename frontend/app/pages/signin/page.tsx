@@ -14,10 +14,11 @@ function Page() {
     const [inputType, setInputType] = useState("password")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    
+    const { token, setToken } = useInfo()
 
     const router = useRouter()
 
-    const {token, setToken, checkToken  } = useInfo()
  
 
     const toggleInputType = () => {
@@ -33,14 +34,16 @@ function Page() {
 
 
     useEffect(() => {
-       
-        checkToken()
 
-        if (token !== null && token !== undefined && token !== '') {
-          router.push('/pages/chooseCV')
-        }
-  
-      },[ router, token ])
+        const mytoken = localStorage.getItem('token') ?? '';
+        console.log(mytoken)
+        console.log("token checked")
+        setToken(mytoken)   
+        if (mytoken || token) {
+            router.push('/pages/chooseCV')
+          }
+
+    }, [router, token])
 
    
 

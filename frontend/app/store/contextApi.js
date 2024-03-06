@@ -57,18 +57,12 @@ export function InfoProvider({ children }) {
         save: false,
     }
 
+    const [token, setToken] = useState(null);
+
 
 
     const [robot, setRobot] = useState(false)
     const [fetchedUserId, setFetchedUserId] = useState(null);
-    const [token, setToken] = useState(null);
-
-    function checkToken() {
-        const mytoken = localStorage.getItem('token') ?? '';
-        console.log(mytoken)
-        console.log("token checked")
-        setToken(mytoken)
-    }
 
 
     function notRobot() {
@@ -243,7 +237,7 @@ export function InfoProvider({ children }) {
         <InfoContext.Provider value={{
             info, setInfo, saveToDatabase, deleteCV, updateCV,
             notRobot, robot, setRobot, fetchCvDatas, initialInfo,
-            checkToken, token, setToken
+            token, setToken
         }}>
             {children}
         </InfoContext.Provider>

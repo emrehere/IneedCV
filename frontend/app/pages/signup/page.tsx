@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useInfo } from '../../store/contextApi'
 
 function Page() {
 
@@ -10,6 +11,8 @@ function Page() {
   const [password, setPassword] = useState('')
 
   const router = useRouter()
+
+  const { token, setToken } = useInfo()
 
 
 
@@ -54,10 +57,10 @@ function Page() {
       
       const mytoken = localStorage.getItem('token')
       console.log(mytoken)
-      if (mytoken !== null) {
-        router.push('/pages/templates')
+      setToken(mytoken)
+      if (mytoken || token) {
+        router.push('/pages/chooseCV')
       }
-
     },[ router ])
   
   
