@@ -90,7 +90,7 @@ function Page() {
 
 
     return (
-        <div style={{ backgroundImage: "url('/signin5.webp')" }} className='h-[105vh]  bg-cover '>
+        <div className='h-[105vh] bg-[url("/signin5.webp")] bg-cover '>
             <div className='h-[80vh] w-full flex flex-col'>
                 <div className='flex-grow' ></div>
                 <div className='flex flex-row'>
