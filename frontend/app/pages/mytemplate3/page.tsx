@@ -119,7 +119,7 @@ export default function Templates() {
     });
 
     return (
-        <div>
+        <div className="bg-[#070717]">
             <MyCV componentRef={componentRef} />
             <div className="pt-4 bg-[#070717] mt-4">
                 <RedButtons hrefComing="/pages/create3" handlePrint={handlePrint} />

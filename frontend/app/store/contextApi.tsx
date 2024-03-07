@@ -36,6 +36,8 @@ interface InfoContextProps {
     initialInfo: Info;
     token: string | null;
     setToken: React.Dispatch<React.SetStateAction<string | null>>;
+    setMyCVroute : React.Dispatch<React.SetStateAction<string>>
+    myCVroute : string
 }
 
 const InfoContext = createContext<InfoContextProps>({} as InfoContextProps);
@@ -100,6 +102,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
     const [token, setToken] = useState<string | null>(null);
     const [robot, setRobot] = useState<boolean>(false);
     const [fetchedUserId, setFetchedUserId] = useState<number | null>(null);
+    const [myCVroute, setMyCVroute] = useState<string>("/pages/mytemplate2");
 
 
     function notRobot() {
@@ -275,7 +278,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
         <InfoContext.Provider value={{
             info, setInfo, saveToDatabase, deleteCV, updateCV,
             notRobot, robot, setRobot, fetchCvDatas, initialInfo,
-            token, setToken
+            token, setToken, myCVroute, setMyCVroute
         }}>
             {children}
         </InfoContext.Provider>

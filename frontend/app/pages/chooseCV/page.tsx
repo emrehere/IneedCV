@@ -14,7 +14,8 @@ function Page() {
 
   const [slideIndex, setSlideIndex] = useState(1);
 
-  const { token, setToken} = useInfo()
+
+  const { token, setToken, myCVroute, setMyCVroute } = useInfo()
 
   const router = useRouter()
 
@@ -66,7 +67,20 @@ function Page() {
     }
   }
 
-  console.log(slideIndex)
+  
+
+  useEffect(() => {
+    localStorage.setItem('myCVroute', myCVroute)
+    console.log("myCVroute set", myCVroute)
+  }, [myCVroute])
+
+  useEffect(() => {
+    const existingRoute = localStorage.getItem('myCVroute')
+    console.log("existingRoute", existingRoute)
+    if (existingRoute !== null) {
+      setMyCVroute(existingRoute)
+    }
+  }, [])
 
 
   return (
@@ -102,31 +116,31 @@ function Page() {
               </div>
 
               <div className=' sm:hidden flex items-center  mx-auto  pt-[10vh]  '>
-                  <div className='text-5xl absolute left-2 text-red-500 '>
-                  <FaArrowAltCircleLeft onClick={arrowLeftFunc} />
-                  </div>
-                  <div className= {slideIndex === 1 ?  "flex flex-col" : "hidden" }>
+                <div  onClick={arrowLeftFunc} className='text-5xl absolute left-2 text-red-500 '>
+                  <FaArrowAltCircleLeft />
+                </div>
+                <div className={slideIndex === 1 ? "flex flex-col" : "hidden"}>
                   <img className="w-full" src="/2.webp" alt=" cv 2 " />
-                  <div className="flex justify-center">
-                    <ChooseCVbutton hrefSend="/pages/create2" />
+                  <div onClick={() => setMyCVroute("/pages/mytemplate2")} className="flex justify-center">
+                    <ChooseCVbutton hrefSend="/pages/mobileCVfill" />
                   </div>
                 </div>
-                <div className= {slideIndex === 2 ?  "flex flex-col" : "hidden" } >
+                <div className={slideIndex === 2 ? "flex flex-col" : "hidden"} >
                   <img className="w-full" src="/1.webp" alt=" cv 1 " />
-                  <div className="flex justify-center mt-4">
-                    <ChooseCVbutton hrefSend="/pages/templates" />
+                  <div onClick={() => setMyCVroute("/pages/mycv")} className="flex justify-center mt-4">
+                    <ChooseCVbutton hrefSend="/pages/mobileCVfill" />
                   </div>
                 </div>
-                <div className= {slideIndex === 3 ?  "flex flex-col" : "hidden"  }>
-                  <img  className="w-full" src="/3.webp" alt=" cv 3 " />
-                  <div className="flex justify-center ">
-                    <ChooseCVbutton hrefSend="/pages/create3" />
+                <div className={slideIndex === 3 ? "flex flex-col" : "hidden"}>
+                  <img className="w-full" src="/3.webp" alt=" cv 3 " />
+                  <div onClick={() => setMyCVroute("/pages/mytemplate3")} className="flex justify-center ">
+                    <ChooseCVbutton hrefSend="/pages/mobileCVfill" />
                   </div>
-                  </div>
-                  <div className='text-5xl flex justify-end w-[90vw] absolute right-2 text-red-500 '>
-                  <FaArrowAltCircleRight onClick={arrowRightFunc} />
-                  </div>
-                  
+                </div>
+                <div onClick={arrowRightFunc} className='text-5xl flex justify-end w-[90vw] absolute right-2 text-red-500 '>
+                  <FaArrowAltCircleRight  />
+                </div>
+
               </div>
 
             </div>
