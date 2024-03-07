@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"
 
 export default function MyCV() {
 
-    const { info, fetchCvDatas, setInfo, token, setToken} = useInfo()
+    const { info, fetchCvDatas, setInfo, token, setToken, myCVroute, setMyCVroute } = useInfo()
 
     const router = useRouter()
 
@@ -38,6 +38,9 @@ export default function MyCV() {
     useEffect(() => {
         const existingRoute = localStorage.getItem('myCVroute')
         console.log("existingRoute", existingRoute)
+        if (existingRoute) {
+          setMyCVroute(existingRoute)
+        }
       }, [])
 
  
@@ -126,7 +129,7 @@ export default function MyCV() {
 
                             </div>
                         </div>
-                        <Buttons hrefFromParent={"/pages/mytemplate2"} />
+                        <Buttons hrefFromParent={myCVroute} />
                     </div>
                 )
             }
