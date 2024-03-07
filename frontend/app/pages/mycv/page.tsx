@@ -46,7 +46,7 @@ function MyCV({ componentRef }: MyCVProps) {
                 token && (
                     <div className="pt-12 pb-4">
                         <div ref={componentRef} className=" sm:h-[1000px] 
-                        sm:w-[1000px] bg-white  mx-auto  sm:p-8 ">
+                        sm:w-[820px] bg-white  mx-auto  sm:p-8 ">
 
                             <GreenPart />
 

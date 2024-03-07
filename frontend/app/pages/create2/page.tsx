@@ -42,7 +42,7 @@ export default function MyCV() {
             {
                 token && (
                     <div className="pt-12">
-                        <div className="h-[1400px] w-[1000px] bg-gray-100 border-gray-500 border-2 border-opacity-40  mx-auto  p-8 ">
+                        <div className="h-[1000px] w-[820px] bg-gray-100 border-gray-500 border-2 border-opacity-40  mx-auto  p-8 ">
 
                             <div className="flex flex-row w-[100%] h-full border-gray-500 border-2 border-opacity-40   ">
 

@@ -33,7 +33,7 @@ function NavbarWelcome() {
   }
 
   return (
-    <div className='bg-white h-[12vh] min-h-16 w-full border-b-2 border-white bg-opacity-90 text-white '>
+    <div className='bg-white h-20  w-full border-b-2 border-white bg-opacity-90 text-white '>
       {
         !token ? (
           <div>

@@ -41,7 +41,7 @@ export default function Templates() {
             {
                 token && (
                     <div className='py-12'>
-                        <div className="h-[1400px] w-[1000px] border-2 bg-gray-100 border-gray-500 border-opacity-40 mx-auto  p-8 ">
+                        <div className="h-[1000px] w-[820px] border-2 bg-gray-100 border-gray-500 border-opacity-40 mx-auto  p-8 ">
 
                             <GreenPart />
 
