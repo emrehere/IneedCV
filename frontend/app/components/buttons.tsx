@@ -32,18 +32,18 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
 
     return (
         <div>
-            <div className='flex flex-row justify-center  mt-4'>
+            <div className='flex flex-row justify-center sm:px-0 px-2 mt-8 sm:mt-4'>
                 <div>
                     {saved ? (
                         <div className='flex flex-row'>
                             <div className='flex justify-center'>
-                                <button onClick={deleteCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 rounded-xl font-bold'>
+                                <button onClick={deleteCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[40vw] sm:w-[24vw] mx-2 rounded-xl font-bold'>
                                     Delete Your Resume
                                 </button>
                             </div>
                             <div className='flex justify-center'>
                                 <Link href={hrefFromParent} >
-                                    <button onClick={updateCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 py-4 rounded-xl font-bold'>
+                                    <button onClick={updateCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[40vw]  sm:w-[24vw] mx-2 py-4 rounded-xl font-bold'>
                                         Update and Proceed
                                     </button>
                                 </Link>
@@ -55,7 +55,7 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
                         // Content to show when saved is false
                         <div className='flex justify-center'>
 
-                            <button onClick={notRobot} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[24vw] mx-2 py-4 rounded-xl font-bold'>
+                            <button onClick={notRobot} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[40vw] sm:w-[24vw] mx-2 py-4 rounded-xl font-bold'>
                                 Save Your Resume Now
                             </button>
 
