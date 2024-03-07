@@ -41,7 +41,7 @@ function MyCV({ componentRef }: MyCVProps) {
                 token && (
                     <div className="pt-12">
                         <div ref={componentRef} className=" mx-auto w-[1000px] flex items-center">
-                            <div className=" h-[1240px] bg-white w-[1000px] border-gray-500 border-2 border-opacity-40 mx-4  my-4 p-4 ">
+                            <div className=" h-[1000px] bg-white w-[1000px] border-gray-500 border-2 border-opacity-40 mx-4  my-4 p-4 ">
 
                                 <div className="flex flex-row w-[100%]  ">
 
