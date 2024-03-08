@@ -69,13 +69,13 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
 
             {
                 robot ? <div className='flex justify-center'>
-                    <div className='bg-blue-100 h-[30vh]  rounded-2xl -mt-[30vh] w-[55vw] flex items-center
+                    <div className='bg-blue-100 sm:h-[30vh] h-[15rem]  rounded-2xl -mt-[30vh] sm:w-[55vw] w-[90vw] p-4 flex items-center
                     justify-center flex-col'>
                         
                         <div className='mb-4'>
                             <CheckBox checked={checked} setChecked={setChecked} />
                         </div>
-                        <button onClick={saveCheck} className='bg-blue-500 hover:bg-blue-600 text-white text-lg w-[18vw] mx-2 py-2 rounded-xl font-bold'>Save Now</button>
+                        <button onClick={saveCheck} className='bg-blue-500 hover:bg-blue-600 text-white text-lg sm:w-[18vw] w-[40vw] mx-2 py-2 rounded-xl font-bold'>Save Now</button>
                     </div>
 
                 </div> : null
