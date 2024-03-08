@@ -123,7 +123,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
             return;
         }
 
-        fetch('http://localhost:8000/mycv', {
+        fetch('http://server.unurluworks.com/mycv', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
         try {
             console.log('Sending data: check here', info);
             
-            const response = await fetch('http://localhost:8000/templates', {
+            const response = await fetch('http://server.unurluworks.com/templates', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -200,7 +200,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
 
         try {
 
-            const response = await fetch(`http://localhost:8000/delete`, {
+            const response = await fetch(`http://server.unurluworks.com/delete`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -246,7 +246,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
         console.log("parsedToken from updateCV", parsedToken)
 
         try {
-            const response = await fetch(`http://localhost:8000/update`, {
+            const response = await fetch(`http://server.unurluworks.com/update`, {
 
                 method: 'PUT',
                 headers: {

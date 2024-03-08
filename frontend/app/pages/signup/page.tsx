@@ -9,6 +9,7 @@ function Page() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [signupError, setSignupError] = useState('')
 
   const router = useRouter()
 
@@ -18,7 +19,7 @@ function Page() {
 
   const saveTheUser = async () => {
     try {
-      const res = await fetch('http://localhost:8000/api/register', {
+      const res = await fetch('http://server.unurluworks.com/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -30,8 +31,7 @@ function Page() {
         })
       })
       console.log(res)
-
-      if (res.ok) {
+     if (res.ok) {
         
         const data = await res.json();
         console.log(data)
@@ -44,7 +44,8 @@ function Page() {
 
         router.push('/pages/chooseCV')
       } else {
-        console.log('user not saved')
+        const errorData = await res.json();
+        setSignupError(errorData.error)
       }
 
     } catch (error) {
@@ -87,11 +88,12 @@ function Page() {
             <input value={password} onChange={(e) => setPassword(e.target.value)} className='bg-blue-300
              bg-opacity-20 sm:w-[19vw] w-full h-10 outline-none px-2' type="text" placeholder=' your password' />
             </div>
-            <div className='sm:w-[26vw] w-[80vw] flex justify-between sm:pt-4 pt-6'>
+            <div className='sm:w-[26vw] w-[80vw] flex justify-between sm:pt-2 pt-4'>
                 <button className='hover:border-opacity-50 border-2 border-opacity-30 border-blue-950 w-[35vw] sm:w-[10vw] py-2'>Back</button>
                 <button onClick={saveTheUser} className='bg-blue-950 hover:shadow-lg shadow-gray-400 text-white w-[35vw] sm:w-[10vw] py-2 ml-4'>Continue</button>
             </div>
-            <div className='pt-2 '>Already have an account? <Link className='text-orange-500 sm:pl-2 font-semibold text-lg' href={'/pages/signin'}>Sign in</Link></div>
+            {signupError && <p className='text-red-500 text-lg font-bold mt-1'>{signupError} !</p>}
+            <div >Already have an account? <Link className='text-orange-500 sm:pl-2 font-semibold text-lg' href={'/pages/signin'}>Sign in</Link></div>
             
         </div>
       </div>

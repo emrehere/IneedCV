@@ -14,6 +14,7 @@ function Page() {
     const [inputType, setInputType] = useState("password")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [loginError, setLoginError] = useState("")
 
     const { token, setToken } = useInfo()
 
@@ -53,7 +54,7 @@ function Page() {
 
 
         try {
-            const res = await fetch('http://localhost:8000/api/login', {
+            const res = await fetch('http://server.unurluworks.com/api/login', {
 
                 method: 'POST',
                 headers: {
@@ -78,7 +79,7 @@ function Page() {
             } else {
                 console.log('User not logged in. Status:', res.status);
                 const errorData = await res.json(); // If the server returns error details in the response body
-                console.log('Error Details:', errorData);
+                setLoginError(errorData.error);
             }
         } catch (error) {
             console.log('Error during login:', error);
@@ -119,6 +120,7 @@ function Page() {
                         </div>
 
                         <button onClick={loginUser} className='bg-blue-950 text-white py-2 sm:w-[20vw] w-[35vw] mt-8 rounded-md font-semibold text-xl  shadow-gray-300 hover:shadow-xl '>Login</button>
+                        {loginError && <p className='text-red-500 mt-1 font-bold text-lg '>{loginError}</p>}
                     </div>
                 </div>
             </div>

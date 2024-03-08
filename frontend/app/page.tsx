@@ -37,7 +37,7 @@ function Page() {
         <div className='hidden sm:flex flex-col justify-center items-center w-[55vw] '>
           <p className='sm:text-4xl font-bold'> Only 2% of resumes make it past the </p>
           <p className='text-4xl font-bold'>first round. Be in the top 2%</p>
-          <p className='mt-8'>Use professional field-tested resume templates that follow the exact</p>
+          <p className='mt-2'>Use professional field-tested resume templates that follow the exact</p>
           <p>‘resume rules’ employers look for. Easy to use and done within</p>
           <p>minutes - try now for free!</p>
         </div>
@@ -64,12 +64,14 @@ function Page() {
 
             <Link href="/pages/signup">
               <button className='bg-white text-[#070717] px-8 py-2 font-semibold rounded-md 
-                shadow-sm shadow-gray-200 hover:bg-[#070717] hover:text-white text-xl mt-8  sm:mt-12'>Create My Resume</button>
+                shadow-sm shadow-gray-200 hover:bg-[#070717] hover:text-white text-xl mt-8 
+                 sm:mt-6'>Create My Resume</button>
             </Link>
           ) : (
             <Link href={'/pages/chooseCV'}>
               <button className='bg-white text-[#070717] px-8 py-2 font-semibold rounded-md 
-                shadow-sm shadow-gray-200 hover:bg-[#070717] hover:text-white text-xl mt-8  sm:mt-12'>Create My Resume</button>
+                shadow-sm shadow-gray-200 hover:bg-[#070717] hover:text-white text-xl mt-8 
+                 sm:mt-6'>Create My Resume</button>
             </Link>
           )
         }
