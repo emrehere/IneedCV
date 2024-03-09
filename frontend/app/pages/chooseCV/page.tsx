@@ -67,20 +67,7 @@ function Page() {
     }
   }
 
-  
 
-  useEffect(() => {
-    localStorage.setItem('myCVroute', myCVroute)
-    console.log("myCVroute set", myCVroute)
-  }, [myCVroute])
-
-  useEffect(() => {
-    const existingRoute = localStorage.getItem('myCVroute')
-    console.log("existingRoute", existingRoute)
-    if (existingRoute !== null) {
-      setMyCVroute(existingRoute)
-    }
-  }, [])
 
 
   return (

@@ -56,7 +56,7 @@ export default function MyCV() {
 
     return (
         <div>
-        { windowInnerWidth < 822 ? <MobileCVfill /> : <div className="bg-[#070717] min-h-screen">
+        { windowInnerWidth < 822 ? <MobileCVfill hrefSent={"/pages/mytemplate2"} /> : <div className="bg-[#070717] min-h-screen">
             {
                 token && (
                     <div className="">

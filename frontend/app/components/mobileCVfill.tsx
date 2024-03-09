@@ -4,7 +4,7 @@ import { useInfo } from "../store/contextApi"
 import Buttons from "@/app/components/buttons"
 import { useRouter } from "next/navigation"
 
-export default function MyCV() {
+export default function MyCV({ hrefSent } : any) {
 
     const { info, fetchCvDatas, setInfo, token, setToken, myCVroute, setMyCVroute } = useInfo()
 
@@ -32,13 +32,6 @@ export default function MyCV() {
         setInfo({ ...info, image: base64 })
     }
 
-    useEffect(() => {
-        const existingRoute = localStorage.getItem('myCVroute')
-        console.log("existingRoute", existingRoute)
-        if (existingRoute) {
-          setMyCVroute(existingRoute)
-        }
-      }, [])
 
  
 
@@ -126,7 +119,7 @@ export default function MyCV() {
 
                             </div>
                         </div>
-                        <Buttons hrefFromParent={myCVroute} />
+                        <Buttons hrefFromParent={hrefSent} />
                     </div>
                 )
             }

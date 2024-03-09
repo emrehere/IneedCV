@@ -54,7 +54,7 @@ export default function Templates() {
 
     return (
         <div>
-        { windowInnerWidth < 822 ? <MobileCVfill /> : <div className='bg-[#070717] min-h-screen'>
+        { windowInnerWidth < 822 ? <MobileCVfill hrefSent={"/pages/mycv"} /> : <div className='bg-[#070717] min-h-screen'>
             {
                 token && (
                     <div className='py-12'>
