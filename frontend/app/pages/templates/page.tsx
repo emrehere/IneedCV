@@ -43,14 +43,12 @@ export default function Templates() {
           setWindowInnerWidth(newInnerWidth);
         };
     
-        // Attach the event listener for window resize
         window.addEventListener('resize', handleResize);
-    
-        // Remove the event listener on component unmount
+        
         return () => {
           window.removeEventListener('resize', handleResize);
         };
-      }, []); // Empty dependency array ensures that the effect runs only on mount and unmount
+      }, []); 
     
       console.log("windowInnerWidth", windowInnerWidth);
 
