@@ -14,11 +14,11 @@ export default function GreenPart() {
 
     return (
         <div>
-            <div className="border-gray-500 border-2 border-opacity-40 h-[25%] flex flex-row ">
+            <div className="border-gray-500 border-2 border-opacity-40  flex flex-row ">
                 <div className="w-[30%] px-8  flex items-center border-2 border-gray-500 border-opacity-40 " >
                     <div className='rounded-xl'>
                         {info?.image && (
-                            <img src={info?.image} alt="Uploaded Image" className='h-80 object-cover mt-6 rounded-xl' />
+                            <img src={info?.image} alt="Uploaded Image" className='h-48 object-cover mt-6 rounded-xl' />
                         ) }
 
 

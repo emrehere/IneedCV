@@ -3,10 +3,12 @@ import { use, useEffect, useState } from "react"
 import { useInfo } from "../../store/contextApi"
 import Buttons from "@/app/components/buttons"
 import { useRouter } from "next/navigation"
+import MobileCVfill from "@/app/components/mobileCVfill"
 
 export default function MyCV() {
 
     const { info, fetchCvDatas, setInfo, token, setToken } = useInfo()
+    const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
    
 
     const router = useRouter()
@@ -36,10 +38,25 @@ export default function MyCV() {
         setInfo({ ...info, image: base64 })
     }
 
+    useEffect(() => {
+        const handleResize = () => {
+          const newInnerWidth = window.innerWidth;
+          setWindowInnerWidth(newInnerWidth);
+        };
+    
+        window.addEventListener('resize', handleResize);
+        
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []); 
+    
+      console.log("windowInnerWidth", windowInnerWidth);
 
 
     return (
-        <div className="bg-[#070717] min-h-screen h-full ">
+        <div>
+        { windowInnerWidth < 887 ? <MobileCVfill /> : <div className="bg-[#070717] min-h-screen h-full ">
             {
                 token && (
                     <div className="py-12">
@@ -122,6 +139,7 @@ export default function MyCV() {
                     </div>
                 )
             }
+            </div> }
         </div>
     )
 }

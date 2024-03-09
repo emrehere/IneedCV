@@ -33,28 +33,28 @@ function NavbarWelcome() {
   }
 
   return (
-    <div className='bg-white h-20  w-full border-b-2 border-white bg-opacity-90 text-white '>
+    <div className='bg-white h-20   w-full border-b-2 border-white bg-opacity-90 text-white '>
       {
         !token ? (
           <div>
         <Link href={'/pages/signin'}>
             <button className='hover:bg-white hover:bg-opacity-90 hover:text-[#070717]  bg-[#070717] px-6 sm:px-12 
-            min-h-16 h-[12vh] font-semibold text-xl sm:border-0 border-r-2 border-white border-opacity-20 tracking-wider'>Sign in</button>
+             h-20 font-semibold text-xl sm:border-0 border-r-2 border-white border-opacity-20 tracking-wider'>Sign in</button>
         </Link>
         <Link href={'/pages/signup'}>
-            <button className='hover:bg-white hover:bg-opacity-90 h-[12vh] hover:text-[#070717] bg-[#070717] px-6 sm:px-12
-             min-h-16 font-semibold text-xl tracking-wider'>Sign up</button>
+            <button className='hover:bg-white hover:bg-opacity-90  hover:text-[#070717] bg-[#070717] px-6 sm:px-12
+            h-20 font-semibold text-xl tracking-wider'>Sign up</button>
         </Link>
       </div>
         ) : (
           <div>
              <Link href={'/pages/chooseCV'}>
             <button className='hover:bg-white hover:bg-opacity-90 hover:text-[#070717]  bg-[#070717] px-3 sm:px-12 
-            min-h-16 h-[12vh] font-semibold text-xl tracking-wider'>Choose CV</button>
+             h-20 font-semibold text-xl tracking-wider'>Choose CV</button>
         </Link>
         <Link href={''}>
-            <button onClick={signOut} className='hover:bg-white hover:bg-opacity-90 h-[12vh] hover:text-[#070717] bg-[#070717] px-3 sm:px-12
-             min-h-16 font-semibold text-xl tracking-wider'>Sign out</button>
+            <button onClick={signOut} className='hover:bg-white hover:bg-opacity-90  hover:text-[#070717] bg-[#070717] px-3 sm:px-12
+             h-20 font-semibold text-xl tracking-wider'>Sign out</button>
         </Link>
           </div>
         )

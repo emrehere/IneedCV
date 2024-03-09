@@ -33,7 +33,7 @@ function Page() {
 
   const clickImage = (index: number) => {
     const normalStyle = ""
-    const clickedStyle = "scale-125 mx-20 mb-12 flex"
+    const clickedStyle = "scale-110 mx-16 mb-12 flex"
 
     if (index === 1) {
       setImg1(clickedStyle)
@@ -93,21 +93,21 @@ function Page() {
             </div>
             <div className='w-[100vw] bg-blue-50 sm:h-[90vh] h-[90vh]'>
 
-              <div className=' hidden sm:flex justify-center mx-auto w-[70vw] pt-[10vh] mt-4 '>
+              <div className=' hidden md:flex justify-center mx-auto  pt-[10vh] mt-4 '>
                 <div>
-                  <img key={1} onClick={() => clickImage(1)} className={`${img1} h-[60vh]`} src="/2.webp" alt=" cv 2 " />
+                  <img key={1} onClick={() => clickImage(1)} className={`${img1} xl:h-[52vh]  h-[30vh] lg:h-[45vh]`} src="/2.webp" alt=" cv 2 " />
                   <div className={img1 === "" ? "hidden" : "flex justify-center "}>
                     <ChooseCVbutton hrefSend="/pages/create2" />
                   </div>
                 </div>
                 <div>
-                  <img key={2} onClick={() => clickImage(2)} className={`${img2} h-[62vh] -mt-[2vh]`} src="/1.webp" alt=" cv 1 " />
+                  <img key={2} onClick={() => clickImage(2)} className={`${img2} h-[30vh] xl:h-[52vh] lg:h-[45vh] lg:-mt-[2vh]`} src="/1.webp" alt=" cv 1 " />
                   <div className={img2 === "" ? "hidden" : "flex justify-center "}>
                     <ChooseCVbutton hrefSend="/pages/templates" />
                   </div>
                 </div>
                 <div>
-                  <img key={3} onClick={() => clickImage(3)} className={`${img3} h-[60vh]`} src="/3.webp" alt=" cv 3 " />
+                  <img key={3} onClick={() => clickImage(3)} className={`${img3} xl:h-[52vh]  h-[30vh] lg:h-[45vh]`} src="/3.webp" alt=" cv 3 " />
                   <div className={img3 === "" ? "hidden" : "flex justify-center "}>
                     <ChooseCVbutton hrefSend="/pages/create3" />
                   </div>
@@ -115,26 +115,26 @@ function Page() {
                 </div>
               </div>
 
-              <div className=' sm:hidden flex items-center  mx-auto  pt-[10vh]  '>
+              <div className=' md:hidden flex items-center  mx-auto  pt-[10vh] pb-[10vh] bg-blue-50  '>
                 <div  onClick={arrowLeftFunc} className='text-5xl absolute left-2 text-red-500 '>
                   <FaArrowAltCircleLeft />
                 </div>
                 <div className={slideIndex === 1 ? "flex flex-col" : "hidden"}>
                   <img className="w-full" src="/2.webp" alt=" cv 2 " />
                   <div onClick={() => setMyCVroute("/pages/mytemplate2")} className="flex justify-center">
-                    <ChooseCVbutton hrefSend="/pages/mobileCVfill" />
+                    <ChooseCVbutton hrefSend="/pages/create2" />
                   </div>
                 </div>
                 <div className={slideIndex === 2 ? "flex flex-col" : "hidden"} >
                   <img className="w-full" src="/1.webp" alt=" cv 1 " />
                   <div onClick={() => setMyCVroute("/pages/mycv")} className="flex justify-center mt-4">
-                    <ChooseCVbutton hrefSend="/pages/mobileCVfill" />
+                    <ChooseCVbutton hrefSend="/pages/templates" />
                   </div>
                 </div>
                 <div className={slideIndex === 3 ? "flex flex-col" : "hidden"}>
                   <img className="w-full" src="/3.webp" alt=" cv 3 " />
                   <div onClick={() => setMyCVroute("/pages/mytemplate3")} className="flex justify-center ">
-                    <ChooseCVbutton hrefSend="/pages/mobileCVfill" />
+                    <ChooseCVbutton hrefSend="/pages/create3" />
                   </div>
                 </div>
                 <div onClick={arrowRightFunc} className='text-5xl flex justify-end w-[90vw] absolute right-2 text-red-500 '>

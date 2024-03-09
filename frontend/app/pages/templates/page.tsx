@@ -4,12 +4,15 @@ import { useInfo } from "../../store/contextApi";
 import GreenPart from '../../components/greenPart1';
 import Buttons from '../../components/buttons';
 import { useRouter } from "next/navigation"
+import MobileCVfill from "../../components/mobileCVfill"
+
 
 
 
 export default function Templates() {
 
     const { info, setInfo, fetchCvDatas, token, setToken } = useInfo();
+    const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
 
 
     const router = useRouter()
@@ -33,11 +36,27 @@ export default function Templates() {
         fetchCvDatas();
     }, [])
 
-    console.log("info", info)
-
+   
+    useEffect(() => {
+        const handleResize = () => {
+          const newInnerWidth = window.innerWidth;
+          setWindowInnerWidth(newInnerWidth);
+        };
+    
+        // Attach the event listener for window resize
+        window.addEventListener('resize', handleResize);
+    
+        // Remove the event listener on component unmount
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []); // Empty dependency array ensures that the effect runs only on mount and unmount
+    
+      console.log("windowInnerWidth", windowInnerWidth);
 
     return (
-        <div className='bg-[#070717] min-h-screen'>
+        <div>
+        { windowInnerWidth < 822 ? <MobileCVfill /> : <div className='bg-[#070717] min-h-screen'>
             {
                 token && (
                     <div className='py-12'>
@@ -78,6 +97,7 @@ export default function Templates() {
                     </div>
                 )
             }
+        </div> }
         </div>
     )
 }
