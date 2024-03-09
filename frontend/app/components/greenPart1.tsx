@@ -18,7 +18,7 @@ export default function GreenPart() {
                 <div className="w-[30%] px-8  flex items-center border-2 border-gray-500 border-opacity-40 " >
                     <div className='rounded-xl'>
                         {info?.image && (
-                            <img src={info?.image} alt="Uploaded Image" className='h-48 object-cover mt-6 rounded-xl' />
+                            <img src={info?.image} alt="Uploaded Image" className='h-40 w-40 object-cover mt-2 rounded-xl' />
                         ) }
 
 
@@ -29,7 +29,7 @@ export default function GreenPart() {
 
 
                 </div>
-                <div className="w-[70%] border-2 border-gray-500 border-opacity-40  flex flex-col space-y-4 justify-center items-center" >
+                <div className="w-[70%] text-[10px] sm:text-[14px]  border-2 border-gray-500 border-opacity-40  flex flex-col space-y-1 justify-center items-center" >
 
                     <input onChange={(e) => setInfo({ ...info, name: e.target.value })}
                         className="w-[50%] font-bold text-3xl px-2 text-gray-800" type="text"

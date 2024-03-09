@@ -58,11 +58,11 @@ export default function Templates() {
             {
                 token && (
                     <div className='py-12'>
-                        <div className="h-[1000px] w-[820px] border-2 bg-gray-100 border-gray-500 border-opacity-40 mx-auto  p-8 ">
+                        <div className="h-[1000px] w-[820px] border-2 bg-gray-100 border-gray-500 border-opacity-40 mx-auto  ">
 
                             <GreenPart />
 
-                            <div className="flex flex-row w-[100%] h-[70%] border-2 border-gray-500 border-opacity-40">
+                            <div className="flex flex-row w-[100%] text-[10px] sm:text-[14px] h-[75%] border-2 border-gray-500 border-opacity-40">
                                 <div className='w-[30%]   '>
                                     <input value={info?.skills} onChange={(e) => setInfo({ ...info, skills: e.target.value })} type="text" placeholder='A Title eg. Skills' className='mt-8 px-2 font-semibold text-xl mx-auto w-[90%] flex' />
                                     <textarea value={info?.skillsInfo} onChange={(e) => setInfo({ ...info, skillsInfo: e.target.value })} name="" placeholder='You can fill here' id="" className='w-[90%] px-2  h-[40%] font-medium flex mx-auto mt-2' ></textarea>
