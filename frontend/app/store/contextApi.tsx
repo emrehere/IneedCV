@@ -44,7 +44,9 @@ interface InfoContextProps {
     loading2: boolean;
     setLoading2: React.Dispatch<React.SetStateAction<boolean>>;
     checked: boolean;
-    setChecked: React.Dispatch<React.SetStateAction<boolean>>;   
+    setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+    loading3: boolean;
+    setLoading3: React.Dispatch<React.SetStateAction<boolean>>;   
 }
 
 const InfoContext = createContext<InfoContextProps>({} as InfoContextProps);
@@ -112,6 +114,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
     const [inputType, setInputType] = useState<string>("password");
     const [loading, setLoading] = useState<boolean>(false);
     const [loading2, setLoading2] = useState<boolean>(false);
+    const [loading3, setLoading3] = useState<boolean>(false);
     const [checked, setChecked] = useState<boolean>(false);
 
 
@@ -160,7 +163,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
 
 
     async function saveToDatabase() {
-        setLoading(true)
+        setLoading3(true)
         setRobot(false)       
         const token = localStorage.getItem('token');
         const parsedToken = token ? JSON.parse(token) : null;
@@ -195,7 +198,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
         } catch (error) {
             console.error('Error:', error);
         } finally {
-            setLoading(false)
+            setLoading3(false)
             setChecked(false)    
         }
     }
@@ -308,7 +311,8 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
             info, setInfo, saveToDatabase, deleteCV, updateCV,
             notRobot, robot, setRobot, fetchCvDatas, initialInfo,
             token, setToken, inputType, setInputType, toggleInputType,
-            loading, setLoading, loading2, setLoading2, checked, setChecked
+            loading, setLoading, loading2, setLoading2, checked, setChecked,
+            loading3, setLoading3
         }}>
             {children}
         </InfoContext.Provider>

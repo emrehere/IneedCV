@@ -18,7 +18,7 @@ interface ButtonsProps {
 export default function Buttons({ hrefFromParent }: ButtonsProps) {
 
 
-    const { info, saveToDatabase, updateCV, deleteCV, notRobot, robot, loading, loading2 , checked} = useInfo();
+    const { info, saveToDatabase, updateCV, deleteCV, notRobot, robot, loading, loading2 ,loading3, checked} = useInfo();
 
     
 
@@ -34,7 +34,7 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
         }
     }
 
-
+    console.log(loading, loading2, loading3)
 
     return (
         <div>
@@ -68,7 +68,7 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
 
                             <button onClick={notRobot} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[40vw] sm:w-[15rem] mx-2 py-4 rounded-xl font-bold'>
                                 {
-                                    loading ? <LoadingState /> : "Save Your Resume"
+                                    loading3 ? <LoadingState /> : "Save Your Resume"
                                 }
                             </button>
 
@@ -91,7 +91,7 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
                         <button onClick={saveCheck} className='bg-blue-500 hover:bg-blue-600
                          text-white text-lg sm:w-[18vw] w-[40vw] mx-2 py-2 rounded-xl font-bold'>
                             {
-                                loading ? <LoadingState /> : "Proceed With This CV"
+                                loading ? <LoadingState /> : "Save Your Resume"
                             }
                             </button>
                     </div>
