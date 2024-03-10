@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useInfo } from '../../store/contextApi'
+import ToggleInput from '@/app/components/toggleInput'
 
 function Page() {
 
@@ -13,7 +14,7 @@ function Page() {
 
   const router = useRouter()
 
-  const { token, setToken } = useInfo()
+  const { token, setToken, inputType, setInputType, toggleInputType } = useInfo()
 
 
 
@@ -86,7 +87,8 @@ function Page() {
           <div className='flex flex-row sm:w-[40vw] lg:w-[26vw] w-[80vw] font-semibold sm:font-medium items-center justify-between text-[12px] sm:text-base'>
             <p className='w-28 sm:mr-0 mr-2'>Password:</p>
             <input value={password} onChange={(e) => setPassword(e.target.value)} className='bg-blue-300 ml-2
-             bg-opacity-20  w-full h-10 outline-none px-2' type="text" placeholder=' your password' />
+             bg-opacity-20  w-full h-10 outline-none px-2' type={inputType} placeholder=' your password' />
+            <ToggleInput /> 
           </div>
           <div className='sm:w-[26vw] w-[80vw] flex justify-between sm:pt-2 pt-4'>
             <Link href={'/'} >

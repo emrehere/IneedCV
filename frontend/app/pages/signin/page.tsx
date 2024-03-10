@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
+import ToggleInput from '@/app/components/toggleInput'
 
 import { useRouter } from 'next/navigation'
 
@@ -11,26 +12,14 @@ import { useInfo } from '../../store/contextApi'
 
 function Page() {
 
-    const [inputType, setInputType] = useState("password")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loginError, setLoginError] = useState("")
+    const [userData, setUserData] = useState({});
 
-    const { token, setToken } = useInfo()
+    const { token, setToken, inputType, setInputType, toggleInputType } = useInfo()
 
     const router = useRouter()
-
-
-
-    const toggleInputType = () => {
-        setInputType("text");
-        setTimeout(() => {
-            setInputType("password");
-        }, 800);
-    };
-
-
-    const [userData, setUserData] = useState({});
 
 
 
@@ -111,11 +100,8 @@ function Page() {
                             <p className='w-28'>Password: </p>
                             <input value={password} onChange={(e) => setPassword(e.target.value)} className='h-10  w-full sm:w-[28vw]
                              border-blue-950 border-2 outline-none border-opacity-25 px-2' type={inputType} placeholder='your password' />
-                            <div>
-                                <p onClick={toggleInputType} className={`absolute 
-                          ${inputType === "password" ? "bg-blue-950" : "bg-white border-4 border-blue-950 border-opacity-50 "}
-                           h-4 w-4 rounded-full -ml-6 -mt-2 ` }>  </p>
-                            </div>
+                            
+                                <ToggleInput />
 
                         </div>
 

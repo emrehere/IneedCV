@@ -36,8 +36,9 @@ interface InfoContextProps {
     initialInfo: Info;
     token: string | null;
     setToken: React.Dispatch<React.SetStateAction<string | null>>;
-    setMyCVroute : React.Dispatch<React.SetStateAction<string>>
-    myCVroute : string
+    inputType: string;
+    setInputType: React.Dispatch<React.SetStateAction<string>>;
+    toggleInputType: () => void;
 }
 
 const InfoContext = createContext<InfoContextProps>({} as InfoContextProps);
@@ -102,7 +103,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
     const [token, setToken] = useState<string | null>(null);
     const [robot, setRobot] = useState<boolean>(false);
     const [fetchedUserId, setFetchedUserId] = useState<number | null>(null);
-    const [myCVroute, setMyCVroute] = useState<string>("/pages/mytemplate2");
+    const [inputType, setInputType] = useState("password");
 
 
     function notRobot() {
@@ -272,13 +273,22 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
         fetchCvDatas()
     }
 
+    
+
+    const toggleInputType = () => {
+        setInputType("text");
+        setTimeout(() => {
+            setInputType("password");
+        }, 800);
+    };
+
 
 
     return (
         <InfoContext.Provider value={{
             info, setInfo, saveToDatabase, deleteCV, updateCV,
             notRobot, robot, setRobot, fetchCvDatas, initialInfo,
-            token, setToken, myCVroute, setMyCVroute
+            token, setToken, inputType, setInputType, toggleInputType
         }}>
             {children}
         </InfoContext.Provider>
