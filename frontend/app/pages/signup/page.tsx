@@ -35,9 +35,7 @@ function Page() {
       if (res.ok) {
 
         const data = await res.json();
-        console.log(data)
-
-        // Store the token securely in localStorage
+      
 
         localStorage.setItem('token', JSON.stringify(data.token));
 
@@ -72,15 +70,7 @@ function Page() {
     }
   }
 
-  useEffect(() => {
-    console.log(email, password, name)
-    document.addEventListener('keydown', handleEnterSignup)
 
-    return () => {
-      document.removeEventListener('keydown', handleEnterSignup)
-    }
-    
-  },[])
 
   
 

@@ -79,22 +79,15 @@ function Page() {
 
     const handleEnter = (event: any) => {
         if (event.key === 'Enter') {
-        
+            event.preventDefault();
             loginUser();
 
         }
 
     }
 
-    useEffect(() => {
-      document.addEventListener('keydown', handleEnter);
-
-      return () => {
-        document.removeEventListener('keydown', handleEnter);
-      }
-    }, [])
-
-    console.log(email, password)
+   
+    
 
 
     return (
