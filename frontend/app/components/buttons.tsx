@@ -3,6 +3,11 @@ import { useEffect, useState } from 'react'
 import { useInfo } from "../store/contextApi";
 import Link from 'next/link';
 import  CheckBox from "./shadcnUI/checkbox";
+import dynamic from 'next/dynamic';
+
+
+const LoadingState = dynamic(() => import('../components/loadingState'), { ssr: false })
+
 
 interface ButtonsProps {
     hrefFromParent: string;
@@ -13,15 +18,16 @@ interface ButtonsProps {
 export default function Buttons({ hrefFromParent }: ButtonsProps) {
 
 
-    const { info, setInfo, saveToDatabase, updateCV, deleteCV, notRobot, robot, setRobot, fetchCvDatas } = useInfo();
+    const { info, saveToDatabase, updateCV, deleteCV, notRobot, robot, loading, loading2 , checked} = useInfo();
 
-    const [checked, setChecked] = useState(false);
+    
 
     const saved = info?.save;
 
     
     const saveCheck = () => {
         if (checked) {
+            console.log("Checked in saveCheck", checked)
             saveToDatabase();
         } else {
             alert("Please confirm that you are a human")
@@ -38,13 +44,18 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
                         <div className='flex flex-row'>
                             <div className='flex justify-center'>
                                 <button onClick={deleteCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[40vw] sm:w-[15rem] mx-2 rounded-xl font-bold'>
-                                    Delete Your Resume
+                                    {
+                                        loading2 ? <LoadingState /> : "Delete Your Resume"
+                                    }
+                                    
                                 </button>
                             </div>
                             <div className='flex justify-center'>
                                 <Link href={hrefFromParent} >
                                     <button onClick={updateCV} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[40vw]  sm:w-[15rem]  mx-2 py-4 rounded-xl font-bold'>
-                                        Update and Proceed
+                                        {
+                                            loading ? <LoadingState /> : "Update Your Resume"
+                                        }
                                     </button>
                                 </Link>
 
@@ -56,7 +67,9 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
                         <div className='flex justify-center'>
 
                             <button onClick={notRobot} className='bg-blue-500 hover:bg-blue-600 text-white text-xl w-[40vw] sm:w-[15rem] mx-2 py-4 rounded-xl font-bold'>
-                                Save Your Resume Now
+                                {
+                                    loading ? <LoadingState /> : "Save Your Resume"
+                                }
                             </button>
 
 
@@ -73,9 +86,14 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
                     justify-center flex-col'>
                         
                         <div className='mb-4'>
-                            <CheckBox checked={checked} setChecked={setChecked} />
+                            <CheckBox />
                         </div>
-                        <button onClick={saveCheck} className='bg-blue-500 hover:bg-blue-600 text-white text-lg sm:w-[18vw] w-[40vw] mx-2 py-2 rounded-xl font-bold'>Save Now</button>
+                        <button onClick={saveCheck} className='bg-blue-500 hover:bg-blue-600
+                         text-white text-lg sm:w-[18vw] w-[40vw] mx-2 py-2 rounded-xl font-bold'>
+                            {
+                                loading ? <LoadingState /> : "Proceed With This CV"
+                            }
+                            </button>
                     </div>
 
                 </div> : null

@@ -5,10 +5,10 @@ import ToggleInput from '@/app/components/toggleInput'
 import { useRouter } from 'next/navigation'
 
 import { useInfo } from '../../store/contextApi'
+import dynamic from 'next/dynamic'
 
 
-
-
+const LoadingState = dynamic(() => import('../../components/loadingState'), { ssr: false })
 
 function Page() {
 
@@ -17,7 +17,7 @@ function Page() {
     const [loginError, setLoginError] = useState("")
     const [userData, setUserData] = useState({});
 
-    const { token, setToken, inputType, setInputType, toggleInputType } = useInfo()
+    const { token, setToken, inputType, loading, setLoading } = useInfo()
 
     const router = useRouter()
 
@@ -41,6 +41,7 @@ function Page() {
 
     const loginUser = async () => {
 
+        setLoading(true)
 
         try {
             const res = await fetch('http://server.unurluworks.com/api/login', {
@@ -63,19 +64,26 @@ function Page() {
                 // Store the token securely in localStorage
                 localStorage.setItem('token', JSON.stringify(data.token));
 
+
                 console.log('User logged in');
                 router.push('/pages/chooseCV')
             } else {
                 console.log('User not logged in. Status:', res.status);
                 const errorData = await res.json(); // If the server returns error details in the response body
                 setLoginError(errorData.error);
+
             }
         } catch (error) {
             console.log('Error during login:', error);
+
         }
+        finally {
+            setLoading(false); // Set loading state to false in the finally block
+        }
+
     };
 
-    
+
 
     const handleEnter = (event: any) => {
         if (event.key === 'Enter') {
@@ -85,10 +93,6 @@ function Page() {
         }
 
     }
-
-   
-    
-
 
     return (
         <div className='h-[105vh] sm:bg-[url("/signin5.webp")] bg-[url("/signin5_mobile.webp")] bg-cover '>
@@ -111,14 +115,18 @@ function Page() {
                             <p className='w-28'>Password: </p>
                             <input onKeyDown={handleEnter} value={password} onChange={(e) => setPassword(e.target.value)} className='h-10  w-full sm:w-[28vw]
                              border-blue-950 border-2 outline-none border-opacity-25 px-2' type={inputType} placeholder='your password' />
-                            
-                                <ToggleInput />
+
+                            <ToggleInput />
 
                         </div>
 
-                        <button onClick={loginUser} className='bg-blue-950 text-white py-2 sm:w-[20vw] w-[35vw] mt-8 rounded-md font-semibold text-xl  shadow-gray-300 hover:shadow-xl '>Login</button>
+                        <button onClick={loginUser} className='bg-blue-950 text-white py-2 sm:w-[20vw] w-[35vw] mt-8 rounded-md font-semibold text-xl  shadow-gray-300 hover:shadow-xl '>
+                            {
+                                loading ? <LoadingState /> : "Login"
+                            }
+                        </button>
                         {loginError && <p className='text-red-500 mt-1 font-bold text-lg '>{loginError}</p>}
-                        
+
                     </div>
                 </div>
             </div>

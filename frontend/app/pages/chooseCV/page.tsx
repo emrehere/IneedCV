@@ -15,7 +15,7 @@ function Page() {
   const [slideIndex, setSlideIndex] = useState(1);
 
 
-  const { token, setToken, myCVroute, setMyCVroute } = useInfo()
+  const { token, setToken } = useInfo()
 
   const router = useRouter()
 
@@ -108,19 +108,19 @@ function Page() {
                 </div>
                 <div className={slideIndex === 1 ? "flex flex-col" : "hidden"}>
                   <img className="w-full" src="/2.webp" alt=" cv 2 " />
-                  <div onClick={() => setMyCVroute("/pages/mytemplate2")} className="flex justify-center">
+                  <div className="flex justify-center">
                     <ChooseCVbutton hrefSend="/pages/create2" />
                   </div>
                 </div>
                 <div className={slideIndex === 2 ? "flex flex-col" : "hidden"} >
                   <img className="w-full" src="/1.webp" alt=" cv 1 " />
-                  <div onClick={() => setMyCVroute("/pages/mycv")} className="flex justify-center mt-4">
+                  <div  className="flex justify-center mt-4">
                     <ChooseCVbutton hrefSend="/pages/templates" />
                   </div>
                 </div>
                 <div className={slideIndex === 3 ? "flex flex-col" : "hidden"}>
                   <img className="w-full" src="/3.webp" alt=" cv 3 " />
-                  <div onClick={() => setMyCVroute("/pages/mytemplate3")} className="flex justify-center ">
+                  <div  className="flex justify-center ">
                     <ChooseCVbutton hrefSend="/pages/create3" />
                   </div>
                 </div>

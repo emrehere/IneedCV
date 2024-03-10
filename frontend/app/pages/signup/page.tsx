@@ -4,6 +4,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useInfo } from '../../store/contextApi'
 import ToggleInput from '@/app/components/toggleInput'
+import dynamic from 'next/dynamic'
+
+const LoadingState = dynamic(() => import('../../components/loadingState'), { ssr: false })
 
 function Page() {
 
@@ -14,11 +17,12 @@ function Page() {
 
   const router = useRouter()
 
-  const { token, setToken, inputType, setInputType, toggleInputType } = useInfo()
+  const { token, setToken, inputType, loading, setLoading } = useInfo()
 
 
 
   const saveTheUser = async () => {
+    setLoading(true)
     try {
       const res = await fetch('http://server.unurluworks.com/api/register', {
         method: 'POST',
@@ -35,7 +39,7 @@ function Page() {
       if (res.ok) {
 
         const data = await res.json();
-      
+
 
         localStorage.setItem('token', JSON.stringify(data.token));
 
@@ -50,7 +54,9 @@ function Page() {
     } catch (error) {
       console.log(error)
     }
-
+    finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -72,7 +78,7 @@ function Page() {
 
 
 
-  
+
 
   return (
     <div className='sm:bg-[url("/hired1.webp")] bg-[url("/signup_mobile3.webp")] w-full  min-h-screen
@@ -95,13 +101,17 @@ function Page() {
             <p className='w-28 sm:mr-0 mr-2'>Password:</p>
             <input onKeyDown={handleEnterSignup} value={password} onChange={(e) => setPassword(e.target.value)} className='bg-blue-300 ml-2
              bg-opacity-20  w-full h-10 outline-none px-2' type={inputType} placeholder=' your password' />
-            <ToggleInput /> 
+            <ToggleInput />
           </div>
           <div className='sm:w-[26vw] w-[80vw] flex justify-between sm:pt-2 pt-4'>
             <Link href={'/'} >
               <button className='hover:border-opacity-50 border-2 border-opacity-30 border-blue-950 w-[35vw] sm:w-[10vw] py-2'>Back</button>
             </Link>
-            <button onClick={saveTheUser} className='bg-blue-950 hover:shadow-lg shadow-gray-400 text-white w-[35vw] sm:w-[10vw] py-2 ml-4'>Continue</button>
+            <button onClick={saveTheUser} className='bg-blue-950 hover:shadow-lg shadow-gray-400 text-white w-[35vw] sm:w-[10vw] py-2 ml-4'>
+              {
+                loading ? <LoadingState /> : "Continue"
+              }
+            </button>
           </div>
           <div className={` ${!signupError && 'h-[12rem] justify-center mt-2'} flex flex-col items-center  `}>
             {signupError && <p className='text-red-500 text-lg font-bold p-2 mt-1'>{signupError} !</p>}

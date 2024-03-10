@@ -39,6 +39,12 @@ interface InfoContextProps {
     inputType: string;
     setInputType: React.Dispatch<React.SetStateAction<string>>;
     toggleInputType: () => void;
+    loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    loading2: boolean;
+    setLoading2: React.Dispatch<React.SetStateAction<boolean>>;
+    checked: boolean;
+    setChecked: React.Dispatch<React.SetStateAction<boolean>>;   
 }
 
 const InfoContext = createContext<InfoContextProps>({} as InfoContextProps);
@@ -103,7 +109,10 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
     const [token, setToken] = useState<string | null>(null);
     const [robot, setRobot] = useState<boolean>(false);
     const [fetchedUserId, setFetchedUserId] = useState<number | null>(null);
-    const [inputType, setInputType] = useState("password");
+    const [inputType, setInputType] = useState<string>("password");
+    const [loading, setLoading] = useState<boolean>(false);
+    const [loading2, setLoading2] = useState<boolean>(false);
+    const [checked, setChecked] = useState<boolean>(false);
 
 
     function notRobot() {
@@ -115,6 +124,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
 
 
     function fetchCvDatas() {
+     
         const token = localStorage.getItem('token');
         const parsedToken = token ? JSON.parse(token) : null;
 
@@ -136,11 +146,13 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
             .then(data => {
                 console.log('CvDatas:', data[0].user.user);
                 setInfo(data[0].user.user)
+               
             })
             .catch(error => {
                 console.error('Error during fetchCvDatas:', error);
-                // Handle the error as needed
+                          
             });
+               
     }
 
 
@@ -148,7 +160,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
 
 
     async function saveToDatabase() {
-
+        setLoading(true)
         setRobot(false)       
         const token = localStorage.getItem('token');
         const parsedToken = token ? JSON.parse(token) : null;
@@ -173,19 +185,23 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
             });
 
             if (response.ok) {
-                console.log('Data saved successfully from frontend');                             
+                console.log('Data saved successfully from frontend');                           
                 fetchCvDatas()
 
             } else {
                 console.error('Failed to save data:', response.statusText);
+                    
             }
         } catch (error) {
             console.error('Error:', error);
+        } finally {
+            setLoading(false)
+            setChecked(false)    
         }
     }
 
     async function deleteCV() {
-
+        setLoading2(true)
         console.log("delteCV", fetchedUserId)
 
         const token = localStorage.getItem('token');
@@ -216,12 +232,12 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
             const data = await response.json();
             console.log('Success:', data);
 
-            // Handle success on the frontend
-
         } catch (error) {
 
             console.error('Error:', error);
             // Handle error on the frontend
+        }  finally {
+            setLoading2(false)
         }
 
         setInfo(initialInfo)
@@ -232,7 +248,7 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
 
 
     async function updateCV() {
-
+        setLoading(true)
         console.log("updateCV", fetchedUserId)
 
         const token = localStorage.getItem('token');
@@ -270,6 +286,9 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
             console.error('Error:', error);
             // Handle error on the frontend
         }
+        finally {
+            setLoading(false)
+        }
         fetchCvDatas()
     }
 
@@ -288,7 +307,8 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
         <InfoContext.Provider value={{
             info, setInfo, saveToDatabase, deleteCV, updateCV,
             notRobot, robot, setRobot, fetchCvDatas, initialInfo,
-            token, setToken, inputType, setInputType, toggleInputType
+            token, setToken, inputType, setInputType, toggleInputType,
+            loading, setLoading, loading2, setLoading2, checked, setChecked
         }}>
             {children}
         </InfoContext.Provider>

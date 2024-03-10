@@ -50,7 +50,7 @@ export default function Templates() {
         };
       }, []); 
     
-      console.log("windowInnerWidth", windowInnerWidth);
+      
 
     return (
         <div>

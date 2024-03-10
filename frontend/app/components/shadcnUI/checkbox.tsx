@@ -1,15 +1,11 @@
 "use client"
 import { Checkbox } from "@/components/ui/checkbox"
-import { useState } from "react"
+import { useInfo } from "@/app/store/contextApi"
 
-interface CheckboxProps {
-    checked: boolean;
-    setChecked: React.Dispatch<React.SetStateAction<boolean>>
-}
 
-export default function CheckboxWithText({ checked, setChecked }: CheckboxProps) {
+export default function CheckboxWithText() {
 
-    
+  const { checked, setChecked } = useInfo();
 
     const check = () => {
         setChecked(!checked)   
