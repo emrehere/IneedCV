@@ -65,7 +65,24 @@ function Page() {
     }
   }, [router])
 
+  const handleEnterSignup = (e: any) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      saveTheUser()
+    }
+  }
 
+  useEffect(() => {
+    console.log(email, password, name)
+    document.addEventListener('keydown', handleEnterSignup)
+
+    return () => {
+      document.removeEventListener('keydown', handleEnterSignup)
+    }
+    
+  },[])
+
+  
 
   return (
     <div className='sm:bg-[url("/hired1.webp")] bg-[url("/signup_mobile3.webp")] w-full  min-h-screen
@@ -76,17 +93,17 @@ function Page() {
           <h1 className='text-3xl  font-semibold mb-4'>Join Now</h1>
           <div className='flex flex-row sm:w-[40vw] lg:w-[26vw] w-[80vw] items-center justify-between text-[12px] font-semibold sm:font-medium sm:text-base'>
             <p className='w-28 sm:mr-0 mr-2 '>Name:</p>
-            <input value={name} onChange={(e) => setName(e.target.value)} className='bg-blue-300 ml-2
+            <input onKeyDown={handleEnterSignup} value={name} onChange={(e) => setName(e.target.value)} className='bg-blue-300 ml-2
              bg-opacity-20  w-full h-10 outline-none px-2' type="text" placeholder=' your name' />
           </div>
           <div className='flex flex-row sm:w-[40vw] lg:w-[26vw]  w-[80vw] font-semibold sm:font-medium items-center py-2 justify-between text-[12px]  sm:text-base '>
             <p className='w-28 sm:mr-0 mr-2 '>Email:</p>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} className='bg-blue-300 ml-2
+            <input onKeyDown={handleEnterSignup} value={email} onChange={(e) => setEmail(e.target.value)} className='bg-blue-300 ml-2
              bg-opacity-20  w-full h-10 outline-none px-2' type="text" placeholder=' your email' />
           </div>
           <div className='flex flex-row sm:w-[40vw] lg:w-[26vw] w-[80vw] font-semibold sm:font-medium items-center justify-between text-[12px] sm:text-base'>
             <p className='w-28 sm:mr-0 mr-2'>Password:</p>
-            <input value={password} onChange={(e) => setPassword(e.target.value)} className='bg-blue-300 ml-2
+            <input onKeyDown={handleEnterSignup} value={password} onChange={(e) => setPassword(e.target.value)} className='bg-blue-300 ml-2
              bg-opacity-20  w-full h-10 outline-none px-2' type={inputType} placeholder=' your password' />
             <ToggleInput /> 
           </div>

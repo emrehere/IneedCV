@@ -75,8 +75,26 @@ function Page() {
         }
     };
 
-    console.log(userData);
+    
 
+    const handleEnter = (event: any) => {
+        if (event.key === 'Enter') {
+        
+            loginUser();
+
+        }
+
+    }
+
+    useEffect(() => {
+      document.addEventListener('keydown', handleEnter);
+
+      return () => {
+        document.removeEventListener('keydown', handleEnter);
+      }
+    }, [])
+
+    console.log(email, password)
 
 
     return (
@@ -93,12 +111,12 @@ function Page() {
                         </div>
                         <div className='flex flex-row sm:w-[35vw] items-center justify-between w-[85vw]'>
                             <p className='w-28'>Email: </p>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} className='h-10 sm:w-[28vw] w-full
+                            <input onKeyDown={handleEnter} value={email} onChange={(e) => setEmail(e.target.value)} className='h-10 sm:w-[28vw] w-full
                              border-blue-950 border-2 outline-none border-opacity-25 px-2' type="text" placeholder='your email' />
                         </div>
                         <div className='flex flex-row sm:w-[35vw] w-[85vw] items-center justify-between pt-4'>
                             <p className='w-28'>Password: </p>
-                            <input value={password} onChange={(e) => setPassword(e.target.value)} className='h-10  w-full sm:w-[28vw]
+                            <input onKeyDown={handleEnter} value={password} onChange={(e) => setPassword(e.target.value)} className='h-10  w-full sm:w-[28vw]
                              border-blue-950 border-2 outline-none border-opacity-25 px-2' type={inputType} placeholder='your password' />
                             
                                 <ToggleInput />
@@ -107,6 +125,7 @@ function Page() {
 
                         <button onClick={loginUser} className='bg-blue-950 text-white py-2 sm:w-[20vw] w-[35vw] mt-8 rounded-md font-semibold text-xl  shadow-gray-300 hover:shadow-xl '>Login</button>
                         {loginError && <p className='text-red-500 mt-1 font-bold text-lg '>{loginError}</p>}
+                        
                     </div>
                 </div>
             </div>
