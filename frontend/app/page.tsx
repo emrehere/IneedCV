@@ -11,7 +11,7 @@ function Page() {
 
 
 
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState<string | null>('')
 
 
 

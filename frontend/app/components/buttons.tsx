@@ -34,7 +34,7 @@ export default function Buttons({ hrefFromParent }: ButtonsProps) {
         }
     }
 
-    console.log(loading, loading2, loading3)
+    
 
     return (
         <div>

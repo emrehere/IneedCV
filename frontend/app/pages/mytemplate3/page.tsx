@@ -4,6 +4,7 @@ import { useInfo } from "../../store/contextApi"
 import { useReactToPrint } from "react-to-print"
 import RedButtons from "@/app/components/RedButtons"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 
 type MyCVProps = {
@@ -13,7 +14,7 @@ type MyCVProps = {
 function MyCV({ componentRef }: MyCVProps) {
 
     const { info, fetchCvDatas, token, setToken } = useInfo()
-  
+
 
     const router = useRouter()
 
@@ -71,7 +72,7 @@ function MyCV({ componentRef }: MyCVProps) {
                                     </div>
                                     <div className='sm:w-[30%] w-[40%]   sm:px-4 p-2 '>
                                         <div className='rounded-xl'>
-                                            <img src={info?.image} alt="Uploaded Image" className='sm:h-52 sm:w-52 object-cover rounded-xl' />
+                                            <Image src={info?.image} alt="Uploaded Image" className='sm:h-52 sm:w-52 object-cover rounded-xl' />
                                         </div>
                                         <div>
                                             <p className="sm:text-2xl text-[13px] font-semibold">{info?.name}</p>

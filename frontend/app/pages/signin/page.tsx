@@ -104,7 +104,7 @@ function Page() {
                      rounded-lg sm:mr-[7vw] mr-[5vw] items-center flex justify-center flex-col py-8 '>
                         <div className='flex text-2xl flex-col items-center mb-12'>
                             <h1 className='sm:text-4xl pb-2 tracking-widest font-semibold text-blue-950'>Long Time No See</h1>
-                            <h2 className='sm:text-3xl font-semibold tracking-wide text-blue-950 ' >Where've You Been !</h2>
+                            <h2 className='sm:text-3xl font-semibold tracking-wide text-blue-950 ' >Where&apos;ve You Been !</h2>
                         </div>
                         <div className='flex flex-row sm:w-[35vw] items-center justify-between w-[85vw]'>
                             <p className='w-28'>Email: </p>

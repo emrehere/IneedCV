@@ -1,15 +1,18 @@
 "use client"
 import { useInfo } from "../store/contextApi";
+import Image from "next/image";
+
+
 
 export default function GreenPart() {
 
     const { info, setInfo } = useInfo();
-      const handleFileUpload = async (e) => {
+      const handleFileUpload = async (e : any) => {
         const file = e.target.files[0];
         console.log("file",file)
         const base64 = await convertToBase64(file);
         console.log("base64",base64)
-        setInfo({ ...info, image: base64 })
+        setInfo({ ...info, image: base64 as string });
       }
 
     return (
@@ -18,7 +21,7 @@ export default function GreenPart() {
                 <div className="w-[30%] px-8  flex items-center border-2 border-gray-500 border-opacity-40 " >
                     <div className='rounded-xl'>
                         {info?.image && (
-                            <img src={info?.image} alt="Uploaded Image" className='h-40 w-40 object-cover mt-2 rounded-xl' />
+                            <Image src={info?.image} alt="Uploaded Image" className='h-40 w-40 object-cover mt-2 rounded-xl' />
                         ) }
 
 
@@ -57,7 +60,7 @@ export default function GreenPart() {
     )
 }
 
-function convertToBase64(file){
+function convertToBase64(file : any) {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);

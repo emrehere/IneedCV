@@ -25,7 +25,7 @@ export default function CheckboxWithText() {
           Please confirm that you are a human
         </label>
         <p className="text-lg text-muted-foreground">
-          Just a safety check to make sure you're not a bot
+          Just a safety check to make sure you&apos;re not a bot
         </p>
       </div>
     </div>

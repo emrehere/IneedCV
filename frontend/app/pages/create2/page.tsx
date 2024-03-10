@@ -4,11 +4,12 @@ import { useInfo } from "../../store/contextApi"
 import Buttons from "@/app/components/buttons"
 import { useRouter } from "next/navigation"
 import MobileCVfill from "@/app/components/mobileCVfill"
+import Image from "next/image"
 
 export default function MyCV() {
 
     const { info, fetchCvDatas, setInfo, token, setToken } = useInfo()
-    const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
+    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(0);
 
     const router = useRouter()
 
@@ -29,12 +30,12 @@ export default function MyCV() {
         fetchCvDatas()
     }, [])
 
-    const handleFileUpload = async (e) => {
+    const handleFileUpload = async (e : any) => {
         const file = e.target.files[0];
         console.log("file", file)
         const base64 = await convertToBase64(file);
         console.log("base64", base64)
-        setInfo({ ...info, image: base64 })
+        setInfo({ ...info, image: base64  as string });
     }
 
     useEffect(() => {
@@ -67,7 +68,7 @@ export default function MyCV() {
                                 <div className='w-[30%]  flex flex-col '>
                                     <div className='rounded-xl'>
                                         {info?.image ? (
-                                            <img src={info?.image} alt="Uploaded Image" className='h-40 object-cover  rounded-xl' />
+                                            <Image src={info?.image} alt="Uploaded Image" className='h-40 object-cover  rounded-xl' />
                                         ) : ""}
 
 
@@ -147,7 +148,7 @@ export default function MyCV() {
 }
 
 
-function convertToBase64(file) {
+function convertToBase64(file : any) {
     return new Promise((resolve, reject) => {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(file);
