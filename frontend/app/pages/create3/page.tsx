@@ -96,7 +96,7 @@ export default function MyCV() {
                                 <div className='w-[30%]  '>
                                     <div className='relative rounded-xl flex justify-center items-center flex-col pt-2'>
                                         {info?.image ? (
-                                            <Image  height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover  rounded-xl' />
+                                            <Image  height={100} width={100} src={info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover  rounded-xl' />
                                         ) : ""}
 
 

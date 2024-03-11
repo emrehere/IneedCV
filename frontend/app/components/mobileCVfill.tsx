@@ -50,7 +50,7 @@ export default function MyCV({ hrefSent } : any) {
                                 <div className='   p-4 '>
                                     <div className='rounded-xl relative flex justify-center flex-col items-center'>
                                         {info?.image ? (
-                                            <Image height={120} width={120}  src={info?.image} alt="Uploaded Image" className=' object-cover mt-6 rounded-xl' />
+                                            <Image height={100} width={100}  src={info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover mt-6 rounded-xl' />
                                         ) : ""}
 
 

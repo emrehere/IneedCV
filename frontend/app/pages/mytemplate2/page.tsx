@@ -47,7 +47,7 @@ function MyCV({ componentRef }: MyCVProps) {
                                     <div className="flex flex-row  w-[100%] text-[10px] sm:text-[14px]   ">
                                         <div className='w-[45%] sm:w-[35%]  sm:p-2 '>
                                             <div className='relative flex items-center justify-center'>
-                                                <Image  height={120} width={120} src={info?.image} alt="Uploaded Image" className='   object-cover mt-6 sm:mt-0 rounded-3xl' />
+                                                <Image  height={100} width={100} src={info?.image} alt="Uploaded Image" className=' h-36 sm:h-48 w-auto  object-cover mt-6 sm:mt-0 rounded-3xl' />
                                             </div>
                                             <div className="">
                                                 <p className="sm:text-2xl font-semibold">{info?.name}</p>
@@ -67,35 +67,35 @@ function MyCV({ componentRef }: MyCVProps) {
                                                 </div>
                                             </div>
                                             <div className="my-4 border-gray-500 border-2 border-opacity-20 p-2 ">
-                                                <p className=" text-2xl text-red-500 font-semibold ">{info?.skills}</p>
+                                                <p className=" sm:text-xl text-red-500 font-semibold ">{info?.skills}</p>
                                                 <p>{info?.skillsInfo}</p>
                                             </div>
 
                                             <div className="my-4 border-gray-500 border-2 border-opacity-20 p-2  ">
-                                                <p className=" text-xl text-red-500 font-semibold ">{info?.languages}</p>
+                                                <p className=" sm:text-xl text-red-500 font-semibold ">{info?.languages}</p>
                                                 <p>{info?.languagesInfo}</p>
                                             </div>
 
                                         </div>
                                         <div className='w-[55%] sm:w-[65%]    ' >
                                             <div className='flex border-gray-500 border-2 border-opacity-20 flex-col p-2   my-2'>
-                                                <p className=" text-xl text-red-500 font-semibold " >{info?.profile}</p>
+                                                <p className=" sm:text-xl text-red-500 font-semibold " >{info?.profile}</p>
                                                 <p>{info?.profileInfo}</p>
 
                                             </div>
                                             <div className='flex flex-col border-gray-500 border-2 border-opacity-20 p-2  my-2'>
-                                                <p className=" text-xl text-red-500 font-semibold  " >{info?.projects}</p>
+                                                <p className=" sm:text-xl text-red-500 font-semibold  " >{info?.projects}</p>
                                                 <p>{info?.projectsInfo}</p>
 
                                             </div>
 
                                             <div className='flex border-gray-500 border-2 border-opacity-20 flex-col p-2   my-2'>
-                                                <p className=" text-xl text-red-500 font-semibold" >{info?.experience}</p>
+                                                <p className=" sm:text-xl text-red-500 font-semibold" >{info?.experience}</p>
                                                 <p>{info?.experienceInfo}</p>
 
                                             </div>
                                             <div className='flex border-gray-500 border-2 border-opacity-20 flex-col p-2  my-2'>
-                                                <p className=" text-xl text-red-500 font-semibold  " >{info?.education}</p>
+                                                <p className=" sm:text-xl text-red-500 font-semibold  " >{info?.education}</p>
                                                 <p>{info?.educationInfo}</p>
 
                                             </div>

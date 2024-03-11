@@ -15,7 +15,7 @@ export default function GreenPart() {
             <div className=" text-md flex pb-4 flex-row border-gray-500 border-t-2 border-l-2 border-r-2 border-opacity-40">
                 <div className="w-[40%] sm:w-[30%] sm:pl-12  relative flex items-center" >
                     <div className='rounded-xl'>
-                    <Image height={120} width={120}  src={ info?.image} alt="Uploaded Image" className=' object-cover mt-2 rounded-xl' />
+                    <Image height={100} width={100} src={ info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover mt-2 rounded-xl' />
                         
                         
                     </div>

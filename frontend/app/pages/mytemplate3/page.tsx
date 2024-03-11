@@ -72,7 +72,7 @@ function MyCV({ componentRef }: MyCVProps) {
                                     </div>
                                     <div className='sm:w-[30%] w-[40%]   sm:px-4 p-2 '>
                                         <div className='rounded-xl flex relative'>
-                                            <Image  height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover rounded-xl' />
+                                            <Image  height={100} width={100} src={info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover rounded-xl' />
                                         </div>
                                         <div>
                                             <p className="sm:text-2xl text-[13px] font-semibold">{info?.name}</p>

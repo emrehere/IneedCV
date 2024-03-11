@@ -76,12 +76,12 @@ function MyCV({ componentRef }: MyCVProps) {
                                     </div>
 
                                     <div className='flex border-gray-500 border-2 border-opacity-20 flex-col p-2  my-2'>
-                                        <p className=" text-2xl text-red-500 font-semibold " >{info?.experience}</p>
+                                        <p className=" sm:text-xl text-red-500 font-semibold " >{info?.experience}</p>
                                         <p>{info?.experienceInfo}</p>
 
                                     </div>
                                     <div className='flex border-gray-500 border-2 border-opacity-20 flex-col  p-2 my-2'>
-                                        <p className=" sm:text-2xl text-red-500 font-semibold " >{info?.education}</p>
+                                        <p className=" sm:text-xl text-red-500 font-semibold " >{info?.education}</p>
                                         <p>{info?.educationInfo}</p>
 
                                     </div>

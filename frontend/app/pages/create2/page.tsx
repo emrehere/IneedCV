@@ -70,7 +70,7 @@ export default function MyCV() {
                                 <div className='w-[30%]  flex flex-col '>
                                     <div className='relative rounded-xl flex justify-center items-center flex-col'>
                                         {info?.image ? (
-                                            <Image  height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover  rounded-xl' />
+                                            <Image  height={100} width={100} src={info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover  rounded-xl' />
                                         ) : ""}
 
 
