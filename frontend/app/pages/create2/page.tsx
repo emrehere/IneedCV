@@ -9,7 +9,7 @@ import Image from "next/image"
 export default function MyCV() {
 
     const { info, fetchCvDatas, setInfo, token, setToken } = useInfo()
-    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(0);
+    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(window.innerWidth)
 
     const router = useRouter()
 
@@ -66,13 +66,13 @@ export default function MyCV() {
                             <div className="flex flex-row w-[100%] h-full border-gray-500 border-2 border-opacity-40   ">
  
                                 <div className='w-[30%]  flex flex-col '>
-                                    <div className='rounded-xl'>
+                                    <div className='rounded-xl flex justify-center items-center flex-col'>
                                         {info?.image ? (
-                                            <Image src={info?.image} alt="Uploaded Image" className='h-40 object-cover  rounded-xl' />
+                                            <Image height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover  rounded-xl' />
                                         ) : ""}
 
 
-                                        <input className="flex items-centerjustify-center " type="file" accept="image/*" onChange={handleFileUpload} />
+                                        <input className="ml-12" type="file" accept="image/*" onChange={handleFileUpload} />
                                     </div>
                                     <div className="flex flex-col px-2">
                                         <input onChange={(e) => setInfo({ ...info, name: e.target.value })}

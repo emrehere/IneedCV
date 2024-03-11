@@ -9,7 +9,7 @@ import Image from "next/image"
 export default function MyCV() {
 
     const { info, fetchCvDatas, setInfo, token, setToken } = useInfo()
-    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(0);
+    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(window.innerWidth)
    
 
     const router = useRouter()
@@ -94,7 +94,7 @@ export default function MyCV() {
                                 <div className='w-[30%]  '>
                                     <div className='rounded-xl flex justify-center items-center flex-col pt-2'>
                                         {info?.image ? (
-                                            <Image src={info?.image} alt="Uploaded Image" className='h-40 object-cover  rounded-xl' />
+                                            <Image height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover  rounded-xl' />
                                         ) : ""}
 
 

@@ -21,7 +21,7 @@ export default function GreenPart() {
                 <div className="w-[30%] px-8  flex items-center border-2 border-gray-500 border-opacity-40 " >
                     <div className='rounded-xl'>
                         {info?.image && (
-                            <Image src={info?.image} alt="Uploaded Image" className='h-40 w-40 object-cover mt-2 rounded-xl' />
+                            <Image height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover mt-2 rounded-xl' />
                         ) }
 
 

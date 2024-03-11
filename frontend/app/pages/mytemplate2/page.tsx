@@ -47,7 +47,7 @@ function MyCV({ componentRef }: MyCVProps) {
                                     <div className="flex flex-row  w-[100%] text-[10px] sm:text-[14px]   ">
                                         <div className='w-[45%] sm:w-[35%]  sm:p-2 '>
                                             <div className=' flex items-center justify-center'>
-                                                <Image src={info?.image} alt="Uploaded Image" className=' sm:h-52 sm:w-52  object-cover mt-6 sm:mt-0 rounded-3xl' />
+                                                <Image height={120} width={120} src={info?.image} alt="Uploaded Image" className='   object-cover mt-6 sm:mt-0 rounded-3xl' />
                                             </div>
                                             <div className="">
                                                 <p className="sm:text-2xl font-semibold">{info?.name}</p>

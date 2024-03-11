@@ -83,19 +83,19 @@ function Page() {
 
               <div className=' hidden md:flex justify-center mx-auto  pt-[10vh] mt-4 '>
                 <div>
-                <Image key={1} onClick={() => clickImage(1)} className={`${img1} xl:h-[52vh]  h-[30vh] lg:h-[45vh]`} src="/2.webp" alt=" cv 2 " />
+                <Image width={270} height={270} key={1} onClick={() => clickImage(1)} className={`${img1} xl:h-[52vh]  h-[30vh] lg:h-[45vh]`} src="/2.webp" alt=" cv 2 " />
                   <div className={img1 === "" ? "hidden" : "flex justify-center "}>
                     <ChooseCVbutton hrefSend="/pages/create2" />
                   </div>
                 </div>
                 <div>
-                <Image key={2} onClick={() => clickImage(2)} className={`${img2} h-[30vh] xl:h-[52vh] lg:h-[45vh] lg:-mt-[2vh]`} src="/1.webp" alt=" cv 1 " />
+                <Image width={270} height={270} key={2} onClick={() => clickImage(2)} className={`${img2} h-[30vh] xl:h-[52vh] lg:h-[45vh] lg:-mt-[2vh]`} src="/1.webp" alt=" cv 1 " />
                   <div className={img2 === "" ? "hidden" : "flex justify-center "}>
                     <ChooseCVbutton hrefSend="/pages/templates" />
                   </div>
                 </div>
                 <div>
-                <Image key={3} onClick={() => clickImage(3)} className={`${img3} xl:h-[52vh]  h-[30vh] lg:h-[45vh]`} src="/3.webp" alt=" cv 3 " />
+                <Image width={270} height={270} key={3} onClick={() => clickImage(3)} className={`${img3} xl:h-[52vh]  h-[30vh] lg:h-[45vh]`} src="/3.webp" alt=" cv 3 " />
                   <div className={img3 === "" ? "hidden" : "flex justify-center "}>
                     <ChooseCVbutton hrefSend="/pages/create3" />
                   </div>
@@ -107,20 +107,20 @@ function Page() {
                 <div  onClick={arrowLeftFunc} className='text-5xl absolute left-2 text-red-500 '>
                   <FaArrowAltCircleLeft />
                 </div>
-                <div className={slideIndex === 1 ? "flex flex-col" : "hidden"}>
-                <Image className="w-full" src="/2.webp" alt=" cv 2 " />
+                <div className={slideIndex === 1 ? "flex flex-col w-full h-full items-center justify-center" : "hidden"}>
+                <Image width={270} height={270} className="w-full" src="/2.webp" alt=" cv 2 " />
                   <div className="flex justify-center">
                     <ChooseCVbutton hrefSend="/pages/create2" />
                   </div>
                 </div>
-                <div className={slideIndex === 2 ? "flex flex-col" : "hidden"} >
-                <Image className="w-full" src="/1.webp" alt=" cv 1 " />
+                <div className={slideIndex === 2 ? "flex flex-col w-full h-full items-center justify-center" : "hidden"} >
+                <Image width={270} height={270} className="w-full" src="/1.webp" alt=" cv 1 " />
                   <div  className="flex justify-center mt-4">
                     <ChooseCVbutton hrefSend="/pages/templates" />
                   </div>
                 </div>
-                <div className={slideIndex === 3 ? "flex flex-col" : "hidden"}>
-                <Image className="w-full" src="/3.webp" alt=" cv 3 " />
+                <div className={slideIndex === 3 ? "flex flex-col w-full h-full items-center justify-center" : "hidden"}>
+                <Image width={270} height={270} className="w-full bg-cover " src="/3.webp" alt=" cv 3 " />
                   <div  className="flex justify-center ">
                     <ChooseCVbutton hrefSend="/pages/create3" />
                   </div>
