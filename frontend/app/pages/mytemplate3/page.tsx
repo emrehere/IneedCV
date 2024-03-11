@@ -15,6 +15,9 @@ function MyCV({ componentRef }: MyCVProps) {
 
     const { info, fetchCvDatas, token, setToken } = useInfo()
 
+    console.log(info, "info")
+  
+
 
     const router = useRouter()
 
@@ -37,12 +40,12 @@ function MyCV({ componentRef }: MyCVProps) {
     }, [])
 
     return (
-        <div className=" bg-[#070717] min-h-screen h-full ">
+        <div className=" bg-[#070717]  h-full ">
             {
                 token && (
                     <div className="pt-12 ">
-                        <div ref={componentRef} className=" mx-auto sm:w-[820px] text-[10px] sm:text-[14px] flex items-center">
-                            <div className=" h-[1000px] bg-white sm:w-[820px] border-gray-500 border-2 border-opacity-40">
+                        <div ref={componentRef} className=" mx-auto w-[280px] sm:w-[820px] text-[5px] sm:text-[14px] flex items-center">
+                            <div className=" h-[500px] sm:h-[1040px] bg-white w-[280px] sm:w-[820px] ">
 
                                 <div className="flex flex-row w-[100%]  ">
 
@@ -58,12 +61,12 @@ function MyCV({ componentRef }: MyCVProps) {
 
                                         </div>
 
-                                        <div className='flex border-gray-500 border-2 border-opacity-20 flex-col p-4  my-2'>
+                                        <div className='flex border-gray-500 border-2 border-opacity-20 flex-col p-2  my-2'>
                                             <p className=" sm:text-xl text-[13px] text-red-500 font-semibold " >{info?.experience}</p>
                                             <p>{info?.experienceInfo}</p>
 
                                         </div>
-                                        <div className='flex border-gray-500 border-2 border-opacity-20 flex-col  p-4 my-2'>
+                                        <div className='flex border-gray-500 border-2 border-opacity-20 flex-col  p-2 my-2'>
                                             <p className=" sm:text-xl text-[13px] text-red-500 font-semibold " >{info?.education}</p>
                                             <p>{info?.educationInfo}</p>
 
@@ -72,7 +75,12 @@ function MyCV({ componentRef }: MyCVProps) {
                                     </div>
                                     <div className='sm:w-[30%] w-[40%]   sm:px-4 p-2 '>
                                         <div className='rounded-xl flex relative'>
-                                            <Image  height={100} width={100} src={info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover rounded-xl' />
+                                            {
+                                                info?.image && (
+                                                    <Image  height={100} width={100} src={info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover rounded-xl' />
+                                                )
+                                            }
+                                           
                                         </div>
                                         <div>
                                             <p className="sm:text-2xl text-[13px] font-semibold">{info?.name}</p>
@@ -120,9 +128,9 @@ export default function Templates() {
     });
 
     return (
-        <div className="bg-[#070717]">
+        <div className="bg-[#070717] min-h-screen flex flex-col items-center justify-center">
             <MyCV componentRef={componentRef} />
-            <div className="pt-4 bg-[#070717] mt-4">
+            <div className="pt-4 bg-[#070717] mt-12 sm:mt-4 mb-4 ">
                 <RedButtons hrefComing="/pages/create3" handlePrint={handlePrint} />
             </div>
 

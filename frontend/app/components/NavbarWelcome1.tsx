@@ -55,7 +55,7 @@ function NavbarWelcome() {
               </div>
             </Link>
             <Link href={'/'}>
-              <div>
+              <div onClick={signOut}>
                 <NavButton title={'Sign out'} />
               </div>
             </Link>

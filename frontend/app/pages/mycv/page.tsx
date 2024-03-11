@@ -41,16 +41,16 @@ function MyCV({ componentRef }: MyCVProps) {
 
 
     return (
-        <div className=" bg-[#070717] min-h-screen h-full w-[100vw] ">
+        <div className=" bg-[#070717] h-full w-[100vw] ">
             {
                 token && (
-                    <div className="pt-12 pb-4">
+                    <div className="pt-12 pb-4 overflow-x-hidden">
                         <div ref={componentRef} className=" sm:h-[1050px] 
-                        sm:w-[820px] bg-white  mx-auto  sm:p-2 ">
+                        w-[280px] sm:w-[820px] bg-white  mx-auto  sm:p-2 ">
 
                             <GreenPart />
 
-                            <div className="flex flex-row w-[100%]  text-[10px] sm:text-[14px]  border-gray-500 border-2 border-opacity-40  ">
+                            <div className="flex flex-row w-[100%]  text-[5px] sm:text-[14px]  border-gray-500 border-2 border-opacity-40  ">
                                 <div className='sm:w-[30%] w-[40%]  p-1 sm:p-2 '>
                                     <div className="my-2 border-gray-500 border-2 border-opacity-20 p-2 ">
                                         <p className=" sm:text-xl text-red-500 font-semibold ">{info?.skills}</p>
@@ -106,7 +106,7 @@ export default function Templates() {
     });
 
     return (
-        <div>
+        <div className="bg-[#070717] min-h-screen">
             <MyCV componentRef={componentRef} />
             <div>
                 <RedButtons hrefComing="/pages/templates" handlePrint={handlePrint} />

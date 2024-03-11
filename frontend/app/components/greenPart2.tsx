@@ -15,14 +15,14 @@ export default function GreenPart() {
             <div className=" text-md flex pb-4 flex-row border-gray-500 border-t-2 border-l-2 border-r-2 border-opacity-40">
                 <div className="w-[40%] sm:w-[30%] sm:pl-12  relative flex items-center" >
                     <div className='rounded-xl'>
-                    <Image height={100} width={100} src={ info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover mt-2 rounded-xl' />
-                        
-                        
+                   {
+                       info?.image && (
+                        <Image height={100} width={100} src={ info?.image} alt="Uploaded Image" className='h-36 sm:h-48 w-auto object-cover mt-2 rounded-xl' />
+                       )
+                   }                                          
                     </div>
-
-
                 </div>
-                <div className=" w-[60%] text-[10px] sm:text-[14px]  flex flex-col sm:space-y-1 justify-center items-center" >
+                <div className=" w-[60%] text-[5px] sm:text-[14px]  flex flex-col sm:space-y-1 justify-center items-center" >
                     <p className="sm:text-xl mt-1 text-md font-bold text-red-500 ">{info?.name}</p>
                     <p className="sm:text-xl text-md font-bold text-red-500 ">{info?.title}</p>                  
                     <div className="flex flex-row w-[70%] pt-2 f justify-between

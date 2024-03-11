@@ -35,21 +35,25 @@ function MyCV({ componentRef }: MyCVProps) {
 
 
     return (
-        <div className=" bg-[#070717] min-h-screen h-full ">
-            <div className="py-12">
-                <div ref={componentRef} className=" sm:w-[820px] sm:px-2  mx-auto" >
+        <div className=" bg-[#070717] h-full ">
+            <div className="py-20 sm:py-12">
+                <div ref={componentRef} className="  sm:w-[820px] w-[280px]  sm:px-2  mx-auto" >
                     {
                         token && (
                             <div>
-                                <div className=" border-gray-500 bg-white sm:h-[1000px] border-2 border-opacity-40 
+                                <div className="  bg-white h-[500px] sm:h-[1040px] 
                              sm:mx-2 sm:p-2 ">
 
-                                    <div className="flex flex-row  w-[100%] text-[10px] sm:text-[14px]   ">
+                                    <div className="flex flex-row  w-[100%] text-[5px] sm:text-[14px]   ">
                                         <div className='w-[45%] sm:w-[35%]  sm:p-2 '>
                                             <div className='relative flex items-center justify-center'>
-                                                <Image  height={100} width={100} src={info?.image} alt="Uploaded Image" className=' h-36 sm:h-48 w-auto  object-cover mt-6 sm:mt-0 rounded-3xl' />
+                                                {
+                                                    info?.image && (
+                                                        <Image  height={100} width={100} src={info?.image} alt="Uploaded Image" className=' h-36 sm:h-48 w-auto  object-cover mt-6 sm:mt-0 rounded-3xl' />
+                                                    )
+                                                }
                                             </div>
-                                            <div className="">
+                                            <div className="flex flex-col  items-center mt-2">
                                                 <p className="sm:text-2xl font-semibold">{info?.name}</p>
                                                 <p className="sm:text-2xl font-semibold ">{info?.title}</p>
                                                 <div className="flex flex-col sm:flex-row  pt-1  justify-between
@@ -122,9 +126,9 @@ export default function Templates() {
     });
 
     return (
-        <div>
+        <div className="bg-[#070717] min-h-screen">
             <MyCV componentRef={componentRef} />
-            <div className="-mt-4">
+            <div className="sm:-mt-4 mt-4 w-full bg-[#070717] ">
                 <RedButtons hrefComing="/pages/create2" handlePrint={handlePrint} />
             </div>
 

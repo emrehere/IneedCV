@@ -62,7 +62,7 @@ export default function MyCV() {
         { windowInnerWidth < 822 ? <MobileCVfill hrefSent={"/pages/mytemplate2"} /> : <div className="bg-[#070717] min-h-screen">
             {
                 token && (
-                    <div className="">
+                    <div className="sm:pt-12">
                         <div className="h-[1040px] w-[820px] bg-gray-100 text-[10px] sm:text-[14px] border-gray-500 border-2 border-opacity-40  mx-auto  ">
 
                             <div className="flex flex-row w-[100%] h-full border-gray-500 border-2 border-opacity-40   ">
