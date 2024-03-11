@@ -48,13 +48,13 @@ export default function MyCV({ hrefSent } : any) {
                             <div className="flex flex-col w-[100%] h-full border-gray-500 border-2 border-opacity-40   ">
 
                                 <div className='   p-4 '>
-                                    <div className='rounded-xl'>
+                                    <div className='rounded-xl relative flex justify-center flex-col items-center'>
                                         {info?.image ? (
-                                            <Image height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover mt-6 rounded-xl' />
+                                            <Image height={120} width={120}  src={info?.image} alt="Uploaded Image" className=' object-cover mt-6 rounded-xl' />
                                         ) : ""}
 
 
-                                        <input type="file" accept="image/*" onChange={handleFileUpload} />
+                                        <input className="ml-12" type="file" accept="image/*" onChange={handleFileUpload} />
                                     </div>
                                     <div className="flex flex-col mb-4">
                                         <input onChange={(e) => setInfo({ ...info, name: e.target.value })}

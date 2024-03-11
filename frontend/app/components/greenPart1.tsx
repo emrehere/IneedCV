@@ -19,7 +19,7 @@ export default function GreenPart() {
         <div>
             <div className="border-gray-500 border-2 border-opacity-40  flex flex-row ">
                 <div className="w-[30%] px-8  flex items-center border-2 border-gray-500 border-opacity-40 " >
-                    <div className='rounded-xl'>
+                    <div className='rounded-xl relative'>
                         {info?.image && (
                             <Image height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover mt-2 rounded-xl' />
                         ) }

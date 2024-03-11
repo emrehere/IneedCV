@@ -68,9 +68,9 @@ export default function MyCV() {
                             <div className="flex flex-row w-[100%] h-full border-gray-500 border-2 border-opacity-40   ">
  
                                 <div className='w-[30%]  flex flex-col '>
-                                    <div className='rounded-xl flex justify-center items-center flex-col'>
+                                    <div className='relative rounded-xl flex justify-center items-center flex-col'>
                                         {info?.image ? (
-                                            <Image height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover  rounded-xl' />
+                                            <Image  height={120} width={120} src={info?.image} alt="Uploaded Image" className=' object-cover  rounded-xl' />
                                         ) : ""}
 
 
