@@ -9,7 +9,9 @@ import Image from "next/image"
 export default function MyCV() {
 
     const { info, fetchCvDatas, setInfo, token, setToken } = useInfo()
-    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(window.innerWidth)
+    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(
+        typeof window !== 'undefined' ? window.innerWidth : 0
+      );
 
     const router = useRouter()
 

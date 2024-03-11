@@ -12,7 +12,9 @@ import MobileCVfill from "../../components/mobileCVfill"
 export default function Templates() {
 
     const { info, setInfo, fetchCvDatas, token, setToken } = useInfo();
-    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(window.innerWidth)
+    const [windowInnerWidth, setWindowInnerWidth] = useState<number>(
+        typeof window !== 'undefined' ? window.innerWidth : 0
+      );
 
 
     const router = useRouter()
